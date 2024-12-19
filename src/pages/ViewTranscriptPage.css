@@ -138,30 +138,41 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 1rem; /* ~20px */
-  width: 100%;
-  max-width: 50rem; /* ~800px */
+  width: 50%;
+  
+  /* Remove fixed max-width/height. Instead, use viewport height.
+     For example: fill up to 80% of the viewport height */
+  max-height: 80vh;
+  
   border-radius: 5px;
-  max-height: 46.875rem; /* ~750px */
-  overflow: auto;
+ 
   gap: 1.25rem; /* ~20px */
-  margin-top: .5rem; /* ~20px */
+  margin-top: 0.5rem; /* ~8px */
   position: relative;
   box-sizing: border-box;
 }
 
+
 /* Main chatbox area */
 .transcript-chatbox {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+  flex-direction: row;
   align-items: flex-start;
-  padding: 1.25rem; /* 20px */
-  background: #323335;
+  padding: 1rem; /* ~20px */
+  width: 75%;
+  
+  /* Remove fixed max-width/height. Instead, use viewport height.
+     For example: fill up to 80% of the viewport height */
+  max-height: 75vh;
+  
   border-radius: 5px;
-  flex: 1 1 auto; /* Allow it to resize with container */
-  max-height: 43.75rem; /* ~700px */
-  overflow-y: auto;
-  gap: 1.25rem; /* 20px */
+  overflow: auto;
+  gap: 1.25rem; /* ~20px */
+  margin-top: 0.5rem; /* ~8px */
+  position: relative;
+  background: #323335;;
   box-sizing: border-box;
+  margin-left: 80px;
 }
 
 /* Inner chat area */

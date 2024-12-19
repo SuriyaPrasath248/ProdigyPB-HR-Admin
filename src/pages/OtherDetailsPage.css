@@ -303,8 +303,8 @@ gap: 12px;
 .user-statistics-viewcount-totalviews-container{
 
   display: flex;
-  width: 160;
-  height: 130px;
+  width: 80px;
+  height: 100px;
   padding: 27.559px 49.213px;
   flex-direction: column;
   justify-content: center;
@@ -347,8 +347,8 @@ gap: 12px;
 
 .user-statistics-viewcount-share-container{
   display: flex;
-  width: 160;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   padding: 27.559px 30.213px;
   flex-direction: column;
   justify-content: center;
@@ -370,11 +370,12 @@ gap: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 34.449px; /* 172.244% */
+  margin-top: -20px;
 }
 
 .user-statistics-viewcount-share-text{
   display: flex;
-  width: 70%;
+  width: 80%;
   height: 58.622px;
   flex-direction: column;
   justify-content: center;
@@ -386,6 +387,7 @@ gap: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 114.199px; /* 219.613% */
+  margin-top: 30px;
 }
 
 .user-statistics-sharedby-container{
@@ -393,9 +395,9 @@ gap: 12px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 8px;
-  min-height:80%;
-  min-height: 390px;
-  max-height: 390px;
+  height:100%;
+  min-height: 350px;
+  max-height: 350px;
   background: #323335;
   overflow: auto;
 
@@ -452,9 +454,9 @@ gap: 12px;
   justify-content: flex-start; /* Align to the left */
   align-items: center;
   width: 100%; /* Ensure it spans full width */
-  padding: 20px 0; /* Add space above and below */
+  /* Add space above and below */
   margin-top: 24px; /* Spacing from the Additional Feedback */
-  margin-bottom: 12px; /* Space between the heading and user stats */
+   /* Space between the heading and user stats */
   padding-left: 44px;
 }
 
