@@ -143,8 +143,11 @@ const ConversationScreen = () => {
         <div className="conversation-screen-header">
           <div className="conversation-screen-header-inside">
             <div className="conversation-screen-header-left">
-              <div className="conversation-screen-header-left-text">
-                Conversations History
+              <div className="conversation-screen-back-button"  onClick={() => navigate("/")}>
+                <img src="/back.png" alt="Back"  className="conversation-screen-back-button-img"/>
+              </div> 
+              <div className="conversation-screen-header-left-text" >
+                Conversation History
               </div>
             </div>
           </div>

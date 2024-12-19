@@ -113,15 +113,13 @@ const ViewJDPage = () => {
           <div className="view-jd-header-right">
             <div 
               className="view-jd-OtherDetails-button" 
-              onClick={() => handleOtherDetails(userEmail, conversationNumber)}
-            >
+              onClick={() => handleOtherDetails(userEmail, conversationNumber)}>
               Other Details
             </div>
             <div 
               className="view-jd-ViewTranscript-button" 
-              onClick={() => handleViewTranscript(userEmail, conversationNumber)}
-            >
-              View Transcript
+              onClick={() => handleViewTranscript(userEmail, conversationNumber)}>
+              <div className="view-jd-ViewTranscript-button-text">View Transcript</div> 
             </div>
           </div>
         </div>

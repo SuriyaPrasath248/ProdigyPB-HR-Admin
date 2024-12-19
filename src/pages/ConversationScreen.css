@@ -55,7 +55,30 @@
     flex: 1 0 0;
     padding :10px 0px 10px 0px;
    /* background: #c0f0c0;  Light green shade */
+    margin-left: -15px;
   }
+
+  .conversation-screen-back-button{
+    display: flex;
+    width: 50px;
+    height: 50px;
+   
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #6E85F2;
+    cursor: pointer;
+
+  }
+
+  .conversation-screen-back-button-img{
+    
+    width: 40px;
+    height: 40px;
+   
+  }
+
 
   .conversation-screen-header-left-text{
       width: 139px;
@@ -66,6 +89,7 @@
       font-style: normal;
       font-weight: 600;
       line-height: 25.877px; /* 107.82% */  
+      padding-left: 15px;
       white-space: nowrap;      
   }
 
@@ -232,7 +256,7 @@
   color: var(--Main-Black-Colour, #323335);
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 150% */
@@ -266,7 +290,7 @@
   background: transparent; /* Make the background transparent */
    /* Text color matches the border */
   /* Ensure the padding does not increase the element size */
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
@@ -284,11 +308,12 @@
   color: var(--Main-Black-Colour, #323335);
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 150% */
-  letter-spacing: -0.16px;   
+  letter-spacing: -0.16px;  
+  padding-right: 12px; 
 }
 
 .userlist-viewjd-button{

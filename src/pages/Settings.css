@@ -76,8 +76,8 @@
 
 .Settings-page-back-button{
   display: flex;
-  width: 23px;
-  height: 23px;
+  width: 20px;
+  height: 20px;
   padding: 16px;
   justify-content: center;
   align-items: center;
@@ -114,15 +114,6 @@
 
 }
 
-.Settings-page-rules-content{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 36px;
-  padding-left: 56px;
-  padding-top: 50px;
-
-}
 
 .Settings-page-title-content{
   display: flex;
@@ -167,75 +158,106 @@
   line-height: 162%; /* 32.4px */
 }
 
-.Settings-page-intro-content {
+
+ /* Intro content */
+ .Settings-page-intro-display-content {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start; /* Align items to the left */
-  gap: 20px; /* Add spacing between title and box */
-  padding-top: 10px;
-
-}
-
-
-
-.Settings-page-intro-text{
-  width: 138px;
-  color: var(--Main-Black-Colour, #323335);
-  font-family: 'Aspekta-500';
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 18px; /* 81.818% */
- 
-}
-
-.Settings-page-intro-box{
-  display: flex;
-  width: 1573px;
-  height: 70px;
-  padding: 24px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 1rem;
+}
+
+.Settings-page-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: .5rem;
+}
+
+.Settings-page-intro-text {
+  color: var(--Main-Black-Colour, #323335);
+  font-family: 'Aspekta-500';
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.Settings-page-intro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem; 
+  padding: 1rem; 
+  width: 100%;
+  max-width: 90vw;
+
+  /* Set a maximum height so the box will not grow taller than this */
+  max-height: 7rem; /* Adjust as needed */
+
   border-radius: 8px;
   border: 1px solid var(--Neutral-300, #D1D5DB);
-  min-height: 70px;
-  overflow: auto;
- 
-}
-
-.Settings-page-intro-box-rules{
-  width: 1535px;
-  height: 144px;
-  color: var(--d-9-d-9-d-9, #323335);
-  font-family: 'Aspekta-400';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 162%; /* 32.4px */
-
-}
-
-.Settings-page-rules-1-2-content{
-  display: flex;
-  align-items: flex-start;
-  gap: 36px;
+  box-sizing: border-box;
   
+  /* This ensures that if the content is taller than max-height, scrollbars appear */
+  overflow: auto; 
+}
+
+.Settings-page-intro-box-rules {
+  /* Make text flexible and line-height proportional */
+  width: 100%; /* Let it fill the parent container */
+  color: var(--d-9-d-9-d-9, #323335);
+  font-family: 'Aspekta-400', sans-serif;
+  font-size: 1.15rem; /* 20px ~ 1.25rem */
+  line-height: 1.62;  /* 162% line-height */
+  
+  /* Remove fixed height, let content dictate height */
+  /* If needed, you can use max-height */
+  /* max-height: 9rem; (adjust as needed) and overflow: auto; */
 }
 
 
-.Settings-page-rules-1-content{
-  position: relative;  
+.Settings-page-rules-content {
   display: flex;
-  width: 646px;
-  height: 160px;
-  padding: 36px 0px 36px 48px;
+  flex-direction: column; 
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  margin-left:1.25rem;;
+  box-sizing: border-box;
+}
+
+/* A container to hold the first two rule boxes side by side */
+.Settings-page-rules-1-2-content {
+  display: flex;
+  flex-wrap: wrap; /* Allows boxes to wrap on smaller screens */
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+
+.Settings-page-rules-1-content {
+  /* Let the element scale relative to viewport width, but never exceed the original size */
+  width: min(100vw, 646px);
+  max-width: 646px;
+  
+  /* Maintain the aspect ratio (width:height = 646:160 ≈ 4.0375:1) */
+  aspect-ratio: 646 / 160;
+  
+  /* Your existing styles */
+  position: relative;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   border-radius: 4px;
   background: #F1F1F1;
+  padding: 36px 0px 36px 48px;
+  box-sizing: border-box;
 }
+
+
 
 .Settings-page-jd-rules-content{
   display: flex;
@@ -247,65 +269,100 @@
 }
 
 .Settings-page-jd-rules-text{
-  width: 203px;
+  max-width: 100%;
   color: var(--BLACK-COLOUR, #0B0D0E);
   font-family: 'Aspekta-500';
-  font-size: 22px;
+  font-size: 1.375rem; /* ~22px */
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 109.091% */
+  line-height: 1.1; /* 109.091% */
   white-space: nowrap;    
 }
 
-.Settings-page-rules-upload-box{
+.Settings-page-rules-upload-box {
+  width: 100%;
+  max-width: 30rem; /* Relative limit instead of fixed 544px */
+  min-height: 2.5rem; 
   display: flex;
-  width: 544px;
-  height: 40px;
-  padding: 19px 0px 21px 0px;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   border: 1.5px dashed #15202B;
   background: #FFF;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.Settings-page-rules-upload-box:hover {
+  background: #ffffff; /* Slightly darker shade */
+  transform: scale(1.05); /* Enlarges the button slightly */
+}
+.Settings-page-rules-upload-box-text {
+  font-family: 'Aspekta-500';
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: #0B0D0E;
+  text-align: center;
+  padding: 0.5rem; /* Optional padding if needed */
+  word-wrap: break-word; /* Ensure text wraps if it's long */
+  max-width: 100%; /* Ensure it doesn't overflow the box */
 }
 
 
 .Settings-page-rules-description{
-  width: 504px;
+  width: 100%;
+  max-width: 30rem; /* Instead of 504px fixed */
   color: #474747;
   font-family: 'Aspekta-400';
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 16px; /* 100% */
+  line-height: 1; /* 100% */
 
 }
 
 
 .Settings-page-rules-2-content{
-  position: relative; 
+    /* Let the element scale relative to viewport width, but never exceed the original size */
+    width: min(100vw, 646px);
+    max-width: 646px;
+    
+    /* Maintain the aspect ratio (width:height = 646:160 ≈ 4.0375:1) */
+    aspect-ratio: 646 / 160;
+    
+    /* Your existing styles */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 4px;
+    background: #F1F1F1;
+    padding: 36px 0px 36px 48px;
+    box-sizing: border-box;
+}
+
+.Settings-page-rules-3{
+  /* Let the element scale relative to viewport width, but never exceed the original size */
+  width: min(100vw, 646px);
+  max-width: 646px;
+  
+  /* Maintain the aspect ratio (width:height = 646:160 ≈ 4.0375:1) */
+  aspect-ratio: 646 / 200;
+  
+  /* Your existing styles */
+  position: relative;
   display: flex;
-  width: 646px;
-  height: 160px;
-  padding: 36px 0px 36px 48px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   border-radius: 4px;
   background: #F1F1F1;
-}
-
-.Settings-page-rules-3{
-  position: relative; 
-  display: flex;
-  width: 646px;
-  height: 160px;
   padding: 36px 0px 36px 48px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  border-radius: 4px;
-  background: #F1F1F1; 
+  box-sizing: border-box;
+
 }
 
 /* Overlay for the popup */

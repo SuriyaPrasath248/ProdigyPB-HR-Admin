@@ -131,12 +131,14 @@ const OtherDetailsPage = () => {
   
               {/* Right Header (Other Details and View JD Buttons) */}
               <div className="Otherdetails-header-right">
-                <div className="Otherdetails-OtherDetails-button" 
-                 onClick={() => handleViewTranscript(userEmail,conversationNumber)}
-                >View Transcript</div>
-                <div className="Otherdetails-ViewJD-button" 
-                 onClick={() => handleViewJD(userEmail,conversationNumber)} 
-                >View Final J.D</div>
+                <div className="Otherdetails-viewtranscript-button" 
+                 onClick={() => handleViewTranscript(userEmail,conversationNumber)}>
+                  <div className="Otherdetails-viewtranscript-button-text">View Transcript</div>
+                </div>
+                <div className="Otherdetails-viewjd-button" 
+                 onClick={() => handleViewJD(userEmail,conversationNumber)} >
+                  <div className="Otherdetails-viewjd-button-text">View Final J.D</div>
+                  </div>
               </div>
             </div>
           </div>

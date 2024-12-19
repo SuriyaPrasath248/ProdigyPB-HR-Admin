@@ -93,14 +93,16 @@ const SettingsPage = () => {
             </button>
              <div className="Settings-page-jd-rules-content">
               <div className="Settings-page-jd-rules-text">Interaction/Engagement Rules</div>
-              <div className="Settings-page-rules-upload-box"></div>
+              <div className ="Settings-page-rules-upload-box">
+                <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+              </div>
             </div>
             <div className="Settings-page-rules-description">
               Maximum combined file size 50 MB • Only zip, pdf, doc, ppt, xls, png, jpg, mp3, mp4 allowed
             </div>
           </div>
           
-          <div className="Settings-page-rules-2-content">
+          <div className="Settings-page-rules-1-content">
               <button
                   className="Settings-page-circular-button"
                   onClick={() => openPopup(location.state?.resultsprompt || "No rules available", "creation")}
@@ -110,7 +112,9 @@ const SettingsPage = () => {
 
             <div className="Settings-page-jd-rules-content">
               <div className="Settings-page-jd-rules-text">J.D. Creation Rules</div>
-              <div className="Settings-page-rules-upload-box"></div>
+              <div className ="Settings-page-rules-upload-box">
+                <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+              </div>
             </div>
             <div className="Settings-page-rules-description">
             Maximum combined file size 50 MB • Only zip, pdf, doc, ppt, xls, png, jpg, mp3, mp4 allowed
@@ -129,7 +133,9 @@ const SettingsPage = () => {
 
           <div className="Settings-page-jd-rules-content">
             <div className="Settings-page-jd-rules-text">Miscellaneous</div>
-            <div className="Settings-page-rules-upload-box"></div>
+            <div className ="Settings-page-rules-upload-box">
+              <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+            </div>
           </div>
           <div className="Settings-page-rules-description">
             Maximum combined file size 50 MB • Only zip, pdf, doc, ppt, xls, png, jpg, mp3, mp4 allowed

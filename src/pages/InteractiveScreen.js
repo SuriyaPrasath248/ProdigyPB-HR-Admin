@@ -135,29 +135,29 @@ const InteractiveScreen = () => {
         if (ConversationNumber > 1) {
             return (
                
-              <div className="userlist-frame" key={Useremail}>
+              <div className="interactive-screen-userlist-frame" key={Useremail}>
               {/* Left Section */}
-              <div className="userlist-frame-left">
-                <div className="userlist-name">{Name}</div>
-                <div className="userlist-name-partition"></div>
-                <div className="userlist-credits-container">
-                  <div className="userlist-credits-text">Credits Remaining -</div>
-                  <div className="userlist-credits-info-container">
-                    <div className="userlist-credits-info-bg">
-                      <div className="userlist-credits-info">{Credits}</div>
+              <div className="interactive-screen-userlist-frame-left">
+                <div className="interactive-screen-userlist-name">{Name}</div>
+                <div className="interactive-screen-userlist-name-partition"></div>
+                <div className="interactive-screen-userlist-credits-container">
+                  <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
+                  <div className="interactive-screen-userlist-credits-info-container">
+                    <div className="interactive-screen-userlist-credits-info-bg">
+                      <div className="interactive-screen-userlist-credits-info">{Credits}</div>
                     </div>
                   </div>
                 </div>
               </div>
     
               {/* Right Section */}
-              <div className="userlist-frame-right">
-                <div className="userlist-buttons">
+              <div className="interactive-screen-userlist-frame-right">
+                <div className="interactive-screen-userlist-buttons">
                   <div
-                    className="userlist-viewall-button"
+                    className="interactive-screen-userlist-viewall-button"
                     onClick={() => handleViewAll(Useremail, ConversationNumber)}
                   >
-                    <div className="userlist-viewall-button-text">View All</div>
+                    <div className="interactive-screen-userlist-viewall-button-text">View All</div>
                   </div>
                 </div>
               </div>
@@ -169,42 +169,42 @@ const InteractiveScreen = () => {
     
 
         return (
-            <div className="userlist-frame" key={Useremail}>
+            <div className="interactive-screen-userlist-frame" key={Useremail}>
             {/* Left Section */}
-            <div className="userlist-frame-left">
-              <div className="userlist-name">{Name}</div>
-              <div className="userlist-name-partition"></div>
-              <div className="userlist-credits-container">
-                <div className="userlist-credits-text">Credits Remaining -</div>
-                <div className="userlist-credits-info-container">
-                  <div className="userlist-credits-info-bg">
-                    <div className="userlist-credits-info">{Credits}</div>
+            <div className="interactive-screen-userlist-frame-left">
+              <div className="interactive-screen-userlist-name">{Name}</div>
+              <div className="interactive-screen-userlist-name-partition"></div>
+              <div className="interactive-screen-userlist-credits-container">
+                <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
+                <div className="interactive-screen-userlist-credits-info-container">
+                  <div className="interactive-screen-userlist-credits-info-bg">
+                    <div className="interactive-screen-userlist-credits-info">{Credits}</div>
                   </div>
                 </div>
               </div>
             </div>
       
             {/* Right Section */}
-            <div className="userlist-frame-right">
+            <div className="interactive-screen-userlist-frame-right">
               <div
-                className="userlist-otherdetails-button"
+                className="interactive-screen-userlist-otherdetails-button"
                 onClick={() => handleOtherDetails(Useremail)}
               >
                 Other Details
               </div>
       
-              <div className="userlist-buttons">
+              <div className="interactive-screen-userlist-buttons">
                 <div
-                  className="userlist-viewtranscript-button"
+                  className="interactive-screen-userlist-viewtranscript-button"
                   onClick={() => handleViewTranscript(Useremail)}
                 >
-                  <div className="userlist-viewtranscript-button-text">View Transcript</div>
+                  <div className="interactive-screen-userlist-viewtranscript-button-text">View Transcript</div>
                 </div>
                 <div
-                  className="userlist-viewjd-button"
+                  className="interactive-screen-userlist-viewjd-button"
                   onClick={() => handleViewJD(Useremail)}
                 >
-                  <div className="userlist-viewjd-button-text">View Final J.D.</div>
+                  <div className="interactive-screen-userlist-viewjd-button-text">View Final J.D.</div>
                 </div>
               </div>
             </div>

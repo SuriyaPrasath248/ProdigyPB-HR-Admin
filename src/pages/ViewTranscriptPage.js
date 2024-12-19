@@ -57,6 +57,26 @@ const ViewTranscriptPage = () => {
         }
     };
     
+    const handleDownload = () => {
+        // Format the chat history
+        const chatData = chatHistory.map(chat => 
+            `Prompt: ${chat.Prompt || "No Prompt"}\nResponse: ${chat.Response || "No Response"}`
+        ).join('\n\n');
+    
+        // Create a blob for the file
+        const blob = new Blob([chatData], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+    
+        // Include user name and conversation number in the file name
+        link.download = link.download = `${userEmail}'s chat-transcript Conversation no${conversationNumber}.txt`;
+
+    
+        link.click();
+    };
+    
+    
+      
 
     // Function for "View J.D."
     const handleViewJD = async (userEmail, conversationNumber) => {
@@ -97,7 +117,7 @@ const ViewTranscriptPage = () => {
               <div className="transcript-header-left">
                 <div className="transcript-back-button"  onClick={() => navigate("/")}>
                     <img src="/back.png" alt="Back" />
-                    </div>
+                </div>
                     {userEmail && <div className="transcript-user-email">{userEmail}</div>}
                     
 
@@ -106,36 +126,49 @@ const ViewTranscriptPage = () => {
               {/* Right Header (Other Details and View JD Buttons) */}
               <div className="transcript-header-right">
                 <div className="transcript-OtherDetails-button" 
-                 onClick={() => handleOtherDetails(userEmail, conversationNumber)}>Other Details</div>
-                <div className="transcript-ViewJD-button" 
-                 onClick={() => handleViewJD(userEmail,conversationNumber)} >View Final J.D</div>
+                 onClick={() => handleOtherDetails(userEmail, conversationNumber)}>
+                    Other Details
+                    </div>
+                <div className="transcript-viewjd-button" 
+                 onClick={() => handleViewJD(userEmail,conversationNumber)} >
+                    <div className ="transcript-viewjd-button-text">View Final J.D</div>
+                </div>
               </div>
             </div>
           </div>
-  
+            
         {/* Chatbox Section */}
-        <div className="transcript-chatbox">
-            <div className="transcript-chatbox-inside">
+        <div className="transcript-chatbox-container">
+        
+            <div className="transcript-chatbox">
+                <div className="transcript-chatbox-inside">
                 {chatHistory.map((chat, index) => (
-                <React.Fragment key={index}>
+                    <React.Fragment key={index}>
                     {/* User Response */}
                     <div className="transcript-user-container">
-                    <div className="transcript-user-text">{chat.Prompt || "No User Prompt"}</div>
-                    </div>
-                    
-                    {/* Prompt */}
-                    <div className="transcript-ai-container">
-                    <div className="transcript-ai-img-circle">
-                        <img src="/ailogo.png" alt="AI" class="transcript-ai-img" />
-                    </div>
-                    <div className="transcript-ai-text">{chat.Response || "No AI Message"}</div>
+                        <div className="transcript-user-text">{chat.Prompt || "No User Prompt"}</div>
                     </div>
 
+                    {/* AI Response */}
+                    <div className="transcript-ai-container">
+                        <div className="transcript-ai-img-circle">
+                        <img src="/ailogo.png" alt="AI" className="transcript-ai-img" />
+                        </div>
+                        <div className="transcript-ai-text">{chat.Response || "No AI Message"}</div>
+                    </div>
                     
-                </React.Fragment>
+                    </React.Fragment>
                 ))}
+                </div>
             </div>
+            <div className="transcript-download-button" onClick={handleDownload}>
+            <img src="/download.png" alt="download" className="transcript-download-button-img" />
             </div>
+
+        </div>
+
+
+            
 
       </section>
     </div>

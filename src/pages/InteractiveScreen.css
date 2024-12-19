@@ -125,7 +125,7 @@
   
   
 
-  .userlist-frame {
+  .interactive-screen-userlist-frame {
     width: 100%; /* Ensure full width */
     height: 112px;
     flex-shrink: 0;
@@ -138,7 +138,7 @@
 }
 
   
-.userlist-frame-left {
+.interactive-screen-userlist-frame-left {
     display: flex;
     justify-content:flex-start;
     align-items: center;
@@ -149,7 +149,7 @@
   }
   
 
-  .userlist-name{
+  .interactive-screen-userlist-name{
     color: var(--Main-Black-Colour, #323335);
     font-feature-settings: 'calt' off;
     font-family: 'Aspekta-500';
@@ -162,21 +162,22 @@
 
   }
 
-.userlist-name-partition{
+.interactive-screen-userlist-name-partition{
     min-width: 1.8px;
     max-width: 1.8px;
     height: 55px;
     background: #424242;
 }
 
-.userlist-credits-container{
+.interactive-screen-userlist-credits-container{
     display: flex;
     align-items: center;
     gap: 8px;
+   
 
 }
 
-.userlist-credits-text{
+.interactive-screen-userlist-credits-text{
     color: var(--Main-Black-Colour, #323335);
     font-feature-settings: 'calt' off;
     font-family: 'Aspekta-500';
@@ -187,27 +188,30 @@
     white-space: nowrap;
 }
 
-.userlist-credits-info-container{
+.interactive-screen-userlist-credits-info-container{
     display: flex;
     width: 318px;
     height: 50px;
     padding-right: 268px;
     align-items: center;
+    
 
 }
 
-.userlist-credits-info-bg{
+.interactive-screen-userlist-credits-info-bg{
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 15px;
+    height: 15px;
     padding: 16px;
+    border-radius: 6px;
     justify-content: center;
     align-items: center;
     gap: 8px;
     flex-shrink: 0; 
+    border: 2px solid #5a70d9;
 }
 
-.userlist-credits-info{
+.interactive-screen-userlist-credits-info{
 
     color: var(--Main-Black-Colour, #323335);
     font-feature-settings: 'calt' off;
@@ -216,9 +220,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 25.877px; /* 117.621% */ 
+    
 }
 
-.userlist-frame-right {
+.interactive-screen-userlist-frame-right {
   display: flex;
   justify-content: flex-end; /* Align everything to the right */
   align-items: center; /* Vertically align content */
@@ -227,11 +232,11 @@
 }
 
 
-.userlist-otherdetails-button {
+.interactive-screen-userlist-otherdetails-button {
   color: var(--Main-Black-Colour, #323335);
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 150% */
@@ -247,13 +252,13 @@
 }
 
 
-.userlist-buttons{
+.interactive-screen-userlist-buttons{
   display: flex;
   align-items: flex-start;
   gap: 16px;
 }
 
-.userlist-viewtranscript-button {
+.interactive-screen-userlist-viewtranscript-button {
   display: flex;
   width: 128px;
   padding: 16px 24px;
@@ -272,25 +277,26 @@
   white-space: nowrap;
 }
 
-.userlist-viewtranscript-button:hover {
+.interactive-screen-userlist-viewtranscript-button:hover {
   background: #c3c4c8; /* Add hover effect */
   color: white; /* Change text color on hover */
 }
 
 
-.userlist-viewtranscript-button-text{
+.interactive-screen-userlist-viewtranscript-button-text{
   width: 120px; 
   color: var(--Main-Black-Colour, #323335);
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 150% */
-  letter-spacing: -0.16px;   
+  letter-spacing: -0.16px;  
+  padding-right: 12px;  
 }
 
-.userlist-viewjd-button{
+.interactive-screen-userlist-viewjd-button{
   display: flex;
   width: 128px;
   padding: 16px 24px;
@@ -302,7 +308,7 @@
   cursor: pointer;
 }
 
-.userlist-viewjd-button-text{
+.interactive-screen-userlist-viewjd-button-text{
   color: #FFF;
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
@@ -312,7 +318,7 @@
   line-height: 24px; /* 133.333% */
   letter-spacing: -0.18px; 
 }
-.userlist-viewjd-button:hover {
+.interactive-screen-userlist-viewjd-button:hover {
   background: #92a3f4; /* Add hover effect */
   color: white; /* Change text color on hover */
 }
@@ -320,7 +326,7 @@
 
 
 
-.userlist-viewall-button{
+.interactive-screen-userlist-viewall-button{
   display: flex;
   width: 128px;
   padding: 16px 24px;
@@ -332,7 +338,7 @@
   cursor: pointer;
 }
 
-.userlist-viewall-button-text{
+.interactive-screen-userlist-viewall-button-text{
   color: #FFF;
   font-feature-settings: 'calt' off;
   font-family: 'Inter-semibold';
@@ -342,7 +348,7 @@
   line-height: 24px; /* 133.333% */
   letter-spacing: -0.18px; 
 }
-.userlist-viewall-button:hover {
+.interactive-screen-userlist-viewall-button:hover {
   background: #92a3f4; /* Add hover effect */
   color: white; /* Change text color on hover */
 }
