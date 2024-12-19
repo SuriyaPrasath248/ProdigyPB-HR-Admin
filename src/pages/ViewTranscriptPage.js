@@ -118,6 +118,11 @@ const ViewTranscriptPage = () => {
             <div className="transcript-chatbox-inside">
                 {chatHistory.map((chat, index) => (
                 <React.Fragment key={index}>
+                    {/* User Response */}
+                    <div className="transcript-user-container">
+                    <div className="transcript-user-text">{chat.Prompt || "No User Prompt"}</div>
+                    </div>
+                    
                     {/* Prompt */}
                     <div className="transcript-ai-container">
                     <div className="transcript-ai-img-circle">
@@ -126,10 +131,7 @@ const ViewTranscriptPage = () => {
                     <div className="transcript-ai-text">{chat.Response || "No AI Message"}</div>
                     </div>
 
-                    {/* User Response */}
-                    <div className="transcript-user-container">
-                    <div className="transcript-user-text">{chat.Prompt || "No User Prompt"}</div>
-                    </div>
+                    
                 </React.Fragment>
                 ))}
             </div>
