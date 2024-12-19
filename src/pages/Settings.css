@@ -1,0 +1,408 @@
+.Settings-body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #FFF; 
+  overflow: hidden;
+}
+
+.Settings-page {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  overflow: hidden;
+}
+
+
+
+
+
+
+.Settings-page-header {
+  width: 100%;
+  
+  padding: 15px 54px;
+  border-bottom: 3px solid #D8D8D8;
+ 
+  /* background: #e0e0e0; Light gray background for the header section */
+}
+
+.Settings-page-content-background {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding-top: 30px ;
+  padding-left: 56px;
+  /* Maybe give this a border or different shade to distinguish 
+  border: 1px solid #ccc; */
+}
+
+.settings-header-text {
+  color: var(--Main-Black-Colour, #323335);
+  font-feature-settings: 'calt' off;
+  font-family: 'Aspekta-600';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25.877px; /* 107.82% */
+  padding-left: 10px;
+}
+
+/* Inner header layout */
+.Settings-page-header-inside {
+  display: flex;
+  align-items: center;
+  gap: 648px;
+  align-self: stretch;
+ /* background: #d0d0f0; /* Light bluish shade */
+}
+
+.Settings-page-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 0 0;
+ /* background: #c0f0c0;  Light green shade */
+}
+
+.Settings-page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  /* background: #f0c0c0;  Light red shade */
+}
+
+.Settings-page-back-button{
+  display: flex;
+  width: 23px;
+  height: 23px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  margin-left: 8px;
+}
+
+
+
+
+.Settings-page-jd-content{
+  padding:0px 20px 20px 20px;
+  
+  height: 500px; /* or some fixed height */
+  overflow: auto;
+
+}
+
+.Settings-page-title-display-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+
+}
+
+.Settings-page-intro-display-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+}
+
+.Settings-page-rules-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  padding-left: 56px;
+  padding-top: 50px;
+
+}
+
+.Settings-page-title-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.Settings-page-title-text{
+  width: 49px;
+  color: var(--Main-Black-Colour, #323335);
+  font-family: 'Aspekta-500';
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 81.818% */
+}
+
+
+.Settings-page-title-box{
+  display: flex;
+  padding: 18px 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--Neutral-300, #D1D5DB);
+  min-height: 30px;
+  
+  overflow: auto;
+
+}
+
+.Settings-page-title-box-rules{
+  width: 759px;
+  height: 30px;
+  color: var(--d-9-d-9-d-9, #323335);
+  font-family: 'Aspekta-400';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 162%; /* 32.4px */
+}
+
+.Settings-page-intro-content {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  gap: 20px; /* Add spacing between title and box */
+  padding-top: 10px;
+
+}
+
+
+
+.Settings-page-intro-text{
+  width: 138px;
+  color: var(--Main-Black-Colour, #323335);
+  font-family: 'Aspekta-500';
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 81.818% */
+ 
+}
+
+.Settings-page-intro-box{
+  display: flex;
+  width: 1573px;
+  height: 70px;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--Neutral-300, #D1D5DB);
+  min-height: 70px;
+  overflow: auto;
+ 
+}
+
+.Settings-page-intro-box-rules{
+  width: 1535px;
+  height: 144px;
+  color: var(--d-9-d-9-d-9, #323335);
+  font-family: 'Aspekta-400';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 162%; /* 32.4px */
+
+}
+
+.Settings-page-rules-1-2-content{
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  
+}
+
+
+.Settings-page-rules-1-content{
+  position: relative;  
+  display: flex;
+  width: 646px;
+  height: 160px;
+  padding: 36px 0px 36px 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 4px;
+  background: #F1F1F1;
+}
+
+.Settings-page-jd-rules-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+
+}
+
+.Settings-page-jd-rules-text{
+  width: 203px;
+  color: var(--BLACK-COLOUR, #0B0D0E);
+  font-family: 'Aspekta-500';
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 109.091% */
+  white-space: nowrap;    
+}
+
+.Settings-page-rules-upload-box{
+  display: flex;
+  width: 544px;
+  height: 40px;
+  padding: 19px 0px 21px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1.5px dashed #15202B;
+  background: #FFF;
+}
+
+
+.Settings-page-rules-description{
+  width: 504px;
+  color: #474747;
+  font-family: 'Aspekta-400';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 100% */
+
+}
+
+
+.Settings-page-rules-2-content{
+  position: relative; 
+  display: flex;
+  width: 646px;
+  height: 160px;
+  padding: 36px 0px 36px 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 4px;
+  background: #F1F1F1;
+}
+
+.Settings-page-rules-3{
+  position: relative; 
+  display: flex;
+  width: 646px;
+  height: 160px;
+  padding: 36px 0px 36px 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 4px;
+  background: #F1F1F1; 
+}
+
+/* Overlay for the popup */
+.modal-overlay {
+position: fixed; /* Ensures it covers the entire viewport */
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+z-index: 999; /* Ensures it appears on top of other content */
+display: flex; /* Flexbox for centering the popup */
+justify-content: center; /* Horizontal centering */
+align-items: center; /* Vertical centering */
+}
+
+.Settings-page-rules-popup {
+position: relative;
+width: 650px;
+height:650px;
+min-height:700px;;
+background-color: #323335;
+border-radius: 10px;
+padding: 20px;
+z-index: 1000;
+color: white;
+text-align: left; /* Align all text to the left */
+display: flex;
+flex-direction: column;
+justify-content: flex-start; /* Align content to the top */
+align-items: flex-start; /* Align content to the left */
+overflow: auto; /* Handle overflow for large content */
+}
+
+.close-modal-button {
+position: absolute; /* Position it relative to the popup */
+top: 10px; /* Distance from the top */
+right: 10px; /* Distance from the right */
+background: #cacd02; /* Red button background */
+color: white;
+border: none;
+border-radius: 50%; /* Make it circular */
+width: 30px; /* Adjust size */
+height: 30px; /* Adjust size */
+font-size: 16px; /* Font size for the 'X' */
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+z-index: 10; /* Ensure it stays above content */
+}
+
+.close-modal-button:hover {
+background: #ff0000; /* Darker red on hover */
+}
+
+
+.Settings-page-rules-popup h2 {
+font-size: 28px; /* Increased font size for better visibility */
+margin-bottom: 15px; /* Space below the heading */
+text-align: center; /* Center-align the heading text */
+width: 100%; /* Ensure it spans the full width of the popup */
+font-family: 'Aspekta-600';  
+position: relative; /* Prevent interference with the close button's absolute positioning */
+}
+
+
+.Settings-page-rules-popup-pc {
+margin: 0;
+padding: 0;
+line-height: 1.5;
+font-size: 18px;
+font-family: 'Aspekta-400';
+padding: 10px;
+}
+
+/* Circular Button */
+.Settings-page-circular-button {
+position: absolute;
+top: 10px; /* Adjust as needed for spacing */
+right: 20px; /* Adjust as needed for spacing */
+width: 30px; /* Button size */
+height: 30px; /* Button size */
+border: none; /* Remove default border */
+border-radius: 50%; /* Make it circular */
+background-color:  #323335; /* Button background color */
+color: #FFF; /* Button text color */
+font-size: 24px; /* Font size for "+" */
+display: flex; /* Center the "+" */
+justify-content: center; /* Center the "+" horizontally */
+align-items: center; /* Center the "+" vertically */
+cursor: pointer; /* Add pointer cursor */
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+z-index: 10; /* Ensure it appears above other content */
+}
+
+/* Hover Effect */
+.Settings-page-circular-button:hover {
+background-color: #949596; /* Slightly darker on hover */
+}

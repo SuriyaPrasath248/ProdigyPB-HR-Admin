@@ -1,0 +1,122 @@
+.login-body {
+    display: flex;
+    width: 100vw; /* Ensure full width of the viewport */
+    height: 100vh; /* Ensure full height of the viewport */
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove large padding */
+    overflow: hidden;
+    background: #FFF; /* Optional: Background color */
+}
+
+
+.login-container {
+    display: flex;
+    padding: 72.545px 32.242px;
+    flex-direction: column;
+    align-items: center;
+    gap: 32.242px;
+    border-radius: 10.747px;
+    background: #F1F1F1;
+}
+
+
+.logobox{
+    width: 139.717px;
+    height: 184.287px;
+    
+}
+
+
+
+.logo-title{
+    color: var(--Main-Black-Colour, #323335);
+    font-family: 'Aspekta-600';
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* Parent container for the image and circular border */
+.logo-image-box {
+    width: 134.343px; /* Define exact size */
+    height: 134.343px; /* Define exact size */
+    position: relative; /* Needed for absolute positioning inside */
+    border-radius: 50%; /* Circular container */
+    overflow: hidden; /* Ensures no content overflows the box */
+    display: flex; /* Center-align contents if needed */
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional background for testing */
+}
+
+/* Circular border */
+.logo-img-round {
+    position: absolute;
+    width: 128px; /* Slightly smaller than container */
+    height: 128px; /* Slightly smaller than container */
+    border: 3px solid #6E85F2; /* Adds a border around the image */
+    border-radius: 50%; /* Circular shape */
+    z-index: 1; /* Sits below the actual image */
+}
+
+/* Logo image */
+.logo-img {
+    position: absolute;
+    width: 100%; /* Ensure it fills the container */
+    height: 100%; /* Ensure it fills the container */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    z-index: 2; /* Sits above the circular border */
+    padding-left: 10px;
+}
+
+
+
+.password-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13.434px;
+}
+
+.password-subbox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13.434px;
+
+}
+
+.password-label{
+    color: var(--Main-Black-Colour, #323335);
+    font-feature-settings: 'calt' off;
+    font-family: 'Aspekta-600';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24.322px; /* 101.343% */
+}
+
+.input-box-holder{
+    display: flex;
+    height: 60px;
+    padding: 0px 16.121px;
+    align-items: center;
+    gap: 10.747px;
+    border-radius: 10.747px;
+    border: 1.343px solid #666;
+    background: #FFF;
+    min-width: 400px;    
+}
+
+.input-box-holder::placeholder{
+    width: 435.273px; 
+    color: #9E9E9E;
+    font-family: Roboto;
+    font-size: 21.495px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;       
+}

@@ -1,0 +1,316 @@
+/* Ensure no global styles leak in */
+.view-jd-page-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.view-jd-page-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+.view-jd-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children */
+  gap: 90px;
+  padding-bottom: 81px;
+  background-color: #FFF;
+  width: 100%; /* Ensure it spans full width */
+  margin: 0 auto;
+}
+
+.view-jd-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 54px;
+  border-bottom: 3px solid #D8D8D8;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* background: #e0e0e0; Light gray background for the header section */
+}
+
+.view-jd-chatbox {
+  width: 95%; /* Same as .jd-link-container */
+  height: 710px;
+  border-radius: 5px;
+  background: #F1F1F1;
+  padding-top: 70px;
+  padding-bottom: 81px;
+  margin-top: -50px;
+  align-items: center;
+}
+
+
+/*.header,
+.header-inside,
+.jd-link-container,
+.chatbox {
+  border: 1px solid red;
+}*/
+
+/* Inner header layout */
+.view-jd-header-inside {
+  display: flex;
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: center;
+  width: 100%; /* Ensure full width */
+  padding: 0 20px; /* Optional: add horizontal padding for spacing */
+  box-sizing: border-box;
+}
+
+.view-jd-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 0 0;
+ /* background: #c0f0c0;  Light green shade */
+}
+
+.view-jd-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Add spacing between the buttons */
+  margin-left: auto; 
+}
+
+.view-jd-user-email{
+  color: var(--Main-Black-Colour, #323335);
+  font-feature-settings: 'calt' off;
+  font-family: 'Aspekta-500';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25.877px; /* 129.384% */
+  padding-left: 40px;
+}
+
+.view-jd-back-button{
+  display: flex;
+  width: 53px;
+  height: 53px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  margin-left: -16px;
+}
+
+.view-jd-ViewTranscript-button{
+  display: flex;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  color: #FFF;
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px;
+  cursor: pointer;
+
+}
+
+
+.view-jd-OtherDetails-button{
+  color: var(--Main-Black-Colour, #323335);
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.16px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+.view-jd-chatbox-header{
+  display: flex;
+  width: 100%;
+  height: 2px;
+ /* padding: 35px 1403px 35px 29px;*/
+  
+  align-items: center;
+  flex-shrink: 0;
+  font-family: Aspekta;
+  border-bottom: 2px solid #ABABAB;
+}
+
+
+.view-jd-chatbox-header-text{
+  color: var(--Main-Black-Colour, #323335);
+  font-family: 'Aspekta-700';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: flex-end;
+  padding-bottom: 81px;
+  padding-left: 20px;
+  
+}
+
+.view-jd-content{
+  padding:0px 20px 20px 40px;
+  font-family: 'Aspekta-400';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #323335;
+  height: 550px; /* Viewport height minus header height */
+  overflow-y: auto; /* Enable vertical scrolling for the content area */
+  margin-top: 50px; /* Add margin to prevent overlap with the fixed header */
+
+}
+
+.view-jd-jd-link-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%; /* Match .chatbox width */
+  margin: 0 auto; /* Center */
+  padding: 0 ; /* Match padding */
+  box-sizing: border-box; /* Consistency */
+  overflow: hidden; /* Prevent overflowing text */
+}
+
+.view-jd-jd-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 96.5%; /* Match parent width */
+  height: 59px;
+  padding: 0px 26px;
+  border-radius: 4px;
+  border: 2px solid #B5B5B5;
+  background: #F1F1F1;
+}
+
+.view-jd-jd-link-header{
+  color: #323335;
+  font-family: 'Aspekta-700';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+
+}
+
+.view-jd-jd-hyperlink {
+  color: #6E85F2;
+  font-family: 'Aspekta-400';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  padding-left: 10px;
+
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  display: block; /* Ensures proper layout for inline elements */
+  width: 100%; /* Optional: Define container width */
+}
+
+
+/* Styles for the JD Link Copy Icon */
+.view-jd-copy-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 59px;
+  height: 59px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.view-jd-copy-border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 59px;
+  height: 59px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 2px solid #B5B5B5;
+  background: #F1F1F1;
+}
+
+.view-jd-copy-img {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+}
+
+
+.view-jd-content-copy-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-top: -75px;
+  padding-right: 10px;
+}
+
+.view-jd-content-copy-border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 2px solid #B5B5B5;
+  background: #F1F1F1;
+}
+
+.view-jd-content-copy-img {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+}
+
+.view-jd-copy-img path {
+  stroke: #424242;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+
+
+

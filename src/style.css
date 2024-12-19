@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #FFF; 
+    overflow: hidden;
+  }
+  
+  .final-jd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 90px;
+    padding-bottom: 81px;
+    background-color: #FFF;
+    width: 100%;
+    
+    margin: 0 auto;
+   /* background: #f9f9f9;  Light gray to see the container edge */
+  }
+  
+  .header {
+    width: 95%;
+    
+    padding: 20px 54px;
+    border-bottom: 3px solid #D8D8D8;
+    margin: 0 auto;
+    /* background: #e0e0e0; Light gray background for the header section */
+  }
+  
+  .chatbox {
+    width: 85%;
+    height: 510px;
+    border-radius: 5px;
+    background: #F1F1F1;
+    padding-top: 70px;
+    padding-bottom: 81px;
+    margin-top: -50px;
+    align-items: center;
+    /* Maybe give this a border or different shade to distinguish 
+    border: 1px solid #ccc; */
+  }
+
+  .jd-link-container, .chatbox {
+    border: 1px solid red; /* Temporary visualization */
+  }
+  
+  
+  /* Inner header layout */
+  .header-inside {
+    display: flex;
+    align-items: center;
+    gap: 648px;
+    align-self: stretch;
+   /* background: #d0d0f0; /* Light bluish shade */
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1 0 0;
+   /* background: #c0f0c0;  Light green shade */
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    /* background: #f0c0c0;  Light red shade */
+  }
+  
+  .back-button{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #6E85F2;
+  }
+  
+  .ViewTranscript-button{
+    display: flex;
+    padding: 12px 8px;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+    border-radius: 4px;
+    background: #6E85F2;
+    color: #FFF;
+    font-feature-settings: 'calt' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.18px;
+    cursor: pointer;
+  
+  }
+  
+  
+  .OtherDetails-button{
+    color: var(--Main-Black-Colour, #323335);
+    font-feature-settings: 'calt' off;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.16px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    cursor: pointer;
+  }
+  
+  .chatbox-header{
+    display: flex;
+    width: 100%;
+    height: 2px;
+   /* padding: 35px 1403px 35px 29px;*/
+    
+    align-items: center;
+    flex-shrink: 0;
+    font-family: Aspekta;
+    border-bottom: 2px solid #ABABAB;
+  }
+  
+  
+  .chatbox-header-text{
+    color: var(--Main-Black-Colour, #323335);
+    font-family: Aspekta;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    justify-content: flex-end;
+    padding-bottom: 81px;
+    padding-left: 20px;
+    
+  }
+  
+  .jd-content{
+    padding:0px 20px 20px 20px;
+    
+    height: 500px; /* or some fixed height */
+    overflow: auto;
+  
+  }
+  
+  .jd-link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%; /* Match chatbox width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 0; /* Remove unnecessary padding */
+    box-sizing: border-box; /* Ensure consistent width calculation */
+    overflow: hidden;
+  }
+  
+  
+  .jd-link{
+    display: flex;
+    width: 97%;
+    height: 59px;
+    padding: 0px 26px;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 2px solid #B5B5B5;
+    background: #F1F1F1;
+  }
+  
+  .jd-link-header{
+    color: #323335;
+    font-family: Aspekta;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+
+  }
+  
+  .jd-hyperlink {
+    color: #6E85F2;
+    font-family: Aspekta;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    display: block; /* Ensures proper layout for inline elements */
+    width: 100%; /* Optional: Define container width */
+  }
+  
+  
+  .copy-icon{
+    width: 59px;
+    height: 59px;
+    flex-shrink: 0;
+  }
+  
+  .copy-border{
+    width: 59px;
+    height: 59px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 2px solid #B5B5B5;
+    background: #F1F1F1;
+  }
+  
+  .copy-img {
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+  }
+  
+  .copy-img path {
+    stroke: #424242;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  
+  

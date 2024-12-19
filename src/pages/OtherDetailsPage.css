@@ -1,0 +1,453 @@
+
+  
+.Otherdetails-bg {
+    width: 100%; /* Make it take the full screen width */
+    max-width: 1920px; /* Optional: Limit maximum width */
+    margin: 0 auto; /* Center the content */
+    background: #FFF;
+  }
+  
+  
+  .Otherdetails-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 54px;
+    border-bottom: 3px solid #D8D8D8;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* background: #e0e0e0; Light gray background for the header section */
+  }
+  
+  .Otherdetails-user-email{
+    color: var(--Main-Black-Colour, #323335);
+    font-feature-settings: 'calt' off;
+    font-family: 'Aspekta-500';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25.877px; /* 129.384% */
+    padding-left: 40px;
+  }
+  
+  /* Inner header layout */
+  .Otherdetails-header-inside {
+    display: flex;
+    justify-content: space-between; /* Space between left and right sections */
+    align-items: center;
+    width: 100%; /* Ensure full width */
+    padding: 0 20px; /* Optional: add horizontal padding for spacing */
+    box-sizing: border-box;
+  }
+  
+  .Otherdetails-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1 0 0;
+   /* background: #c0f0c0;  Light green shade */
+  }
+  
+  .Otherdetails-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Add spacing between the buttons */
+    margin-left: auto; /* Push this section to the right */
+  }
+  
+  .Otherdetails-back-button{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #6E85F2;
+    cursor: pointer;
+  }
+  
+  .Otherdetails-ViewJD-button{
+    display: flex;
+    padding: 14px 14px;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+    border-radius: 4px;
+    background: #6E85F2;
+    color: #FFF;
+    font-feature-settings: 'calt' off;
+    font-family: 'Inter-semibold';
+    font-size: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    font-style: normal;
+    
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.18px;
+    cursor: pointer;
+  
+  }
+  
+  
+  .Otherdetails-OtherDetails-button{
+    display: flex;
+    width: 128px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+    border-radius: 4px;
+    color: var(--Main-Black-Colour, #323335);
+    font-feature-settings: 'calt' off;
+    font-family: 'Inter-semibold';
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #6A6A6A; /* Add a border */
+    background: transparent; /* Make the background transparent */
+     /* Text color matches the border */
+    /* Ensure the padding does not increase the element size */
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .userlist-viewtranscript-button:hover {
+    background: #c3c4c8; /* Add hover effect */
+    color: white; /* Change text color on hover */
+  }
+  
+  
+ .Session-feedback-container{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+    padding-left: 56px;
+    padding-top: 56px;
+ }
+
+.Session-feedback-header{
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+}
+.seesion-feedback-text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.session-feedback-text{
+    width: 200px;
+    color: var(--Main-Black-Colour, #323335);
+    font-family: 'Aspekta-600';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 35px; /* 159.091% */
+}
+
+.session-feedback-subtext{
+    color: #4B5563;
+    font-family: 'Inter-semibold';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 100% */
+    width: 302px;
+}
+
+.start-container{
+    display: flex;
+    width: 274px;
+    align-items: center;
+    gap: 16px;
+}
+
+.start-image-holder{
+    display: flex;
+align-items: flex-start;
+gap: 12px;
+}
+
+.stars-container {
+  display: flex;
+  gap: 8px; /* Add spacing between stars */
+  align-items: center;
+}
+
+.star {
+  font-size: 30px; /* Adjust star size */
+  color: #ccc; /* Default color for empty stars */
+}
+
+.star.filled {
+  color: #f5c518; /* Gold color for filled stars */
+}
+
+.star.empty {
+  color: #ccc; /* Grey color for empty stars */
+}
+
+.star-text {
+  color: var(--Neutral-500, #6B7280);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 112.5% */
+  margin-left: 10px; /* Spacing between stars and text */
+  
+}
+
+
+.addtional-feedback-container{
+  display: flex;
+  padding: 0px 24px;
+  flex-direction: column;
+  
+  align-items: flex-start;
+  gap: 16px;
+
+
+}
+
+.addtional-feedback-title-container{
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+    
+}
+.addtional-feedback-title{
+  flex: 1 0 0;
+  color: var(--Main-Black-Colour, #323335);
+  font-family: 'Aspekta-500';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 100% */  
+}
+
+
+.addtional-feedback-text-container {
+  display: flex;
+  padding: 24px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--Neutral-300, #D1D5DB);
+
+  /* Responsive Width Logic */
+  width: 80%; /* Default width as percentage */
+  max-width: 1500px; /* Hard upper limit */
+  min-width: 1000px; /* Minimum width */
+  box-sizing: border-box; /* Ensure padding is included in width */
+  overflow: auto;
+}
+
+
+.addtional-feedback-text{
+  width: 100%; /* Take up full available space */
+  max-width: 90%; /* Optional limit */
+  color: var(--d-9-d-9-d-9, #323335);
+  font-family: 'Aspekta-400';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 162%; /* 32.4px */
+}
+
+
+.user-statistics-container {
+    display: flex; /* Enable horizontal layout */
+    /* Even spacing between children */
+    align-items: flex-start; /* Align items to the top */
+    gap: 24px; /* Space between columns */
+    margin-top: 36px; /* Add top margin for spacing */
+    flex-wrap: wrap; /* Wrap to the next line if necessary */
+    margin-left: 80px;
+  }
+  
+
+.user-statistics-viewcount-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.user-statistics-viewcount-totalviews-container{
+
+  display: flex;
+  width: 160;
+  height: 130px;
+  padding: 27.559px 49.213px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 11.811px;
+  border-radius: 8px;
+  background: #323335;
+
+}
+
+.user-statistics-viewcount-totalviews-header{
+  width: 113px;
+  height: 25px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Aspekta-500';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 34.449px; /* 172.244% */
+
+}
+
+.user-statistics-viewcount-totalviews-text{
+  display: flex;
+  width: 89.075px;
+  height: 58.622px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Aspekta-500';
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 114.199px; /* 219.613% */
+}
+
+.user-statistics-viewcount-share-container{
+  display: flex;
+  width: 160;
+  height: 130px;
+  padding: 27.559px 30.213px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 11.811px; 
+  border-radius: 8px;
+  background: #323335;
+
+}
+
+.user-statistics-viewcount-share-header{
+  width: 100%;
+  height: 25px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Aspekta-500';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 34.449px; /* 172.244% */
+}
+
+.user-statistics-viewcount-share-text{
+  display: flex;
+  width: 70%;
+  height: 58.622px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Aspekta-500';
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 114.199px; /* 219.613% */
+}
+
+.user-statistics-sharedby-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 8px;
+  min-height:80%;
+  min-height: 390px;
+  max-height: 390px;
+  background: #323335;
+  overflow: auto;
+
+
+}
+
+.user-statistics-sharedby-header{
+  display: flex;
+  width: 246px;
+  height: 40.8px;
+  padding: 16px 142px 16px 16px;
+  align-items: center;
+  gap: 10px;  
+  border-bottom: 1px solid #323335;
+  border-radius: 8px;
+  background: #6A6A6A;
+}
+
+.user-statistics-sharedby-header-text{
+  width: 188px;
+  flex-shrink: 0;
+  color: #FFF;
+  font-family: 'Aspekta-500';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px; /* 175% */
+}
+
+.user-statistics-email-container{
+  display: flex;
+  width: 246px;
+  height: 40.8px;
+  padding: 16px 142px 16px 16px;
+  align-items: center;
+  gap: 10px; 
+  border-bottom: 1px solid #A8A8A8;
+  background: #323335;
+}
+
+
+.user-statistics-email{
+  color: #FFF;
+  font-family: 'Aspekta-500';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px; /* 175% */
+}
+
+
+.user-statistics-heading-container {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  align-items: center;
+  width: 100%; /* Ensure it spans full width */
+  padding: 20px 0; /* Add space above and below */
+  margin-top: 24px; /* Spacing from the Additional Feedback */
+  margin-bottom: 12px; /* Space between the heading and user stats */
+}
+
+.user-statistics-header {
+  color: #1F2937; /* Text color */
+  font-family: 'Aspekta-600', sans-serif;
+  font-size: 24px; /* Adjust font size */
+  font-weight: 600; /* Bold text */
+  line-height: 35px; /* Adjust line height */
+  margin-left: 56px; /* Align with additional feedback container */
+}
