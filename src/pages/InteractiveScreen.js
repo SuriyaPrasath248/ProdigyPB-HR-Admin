@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // For navigation
 import "./InteractiveScreen.css";
 import { db } from "../firebase/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc , updateDoc} from "firebase/firestore";
 
 const InteractiveScreen = () => {
+  
     const [userList, setUserList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [editingUserEmail, setEditingUserEmail] = useState(null);
+    const [newCreditsValue, setNewCreditsValue] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -75,6 +78,49 @@ const InteractiveScreen = () => {
       }
   };
   
+  const handleCreditsClick = (email, currentCredits) => {
+    setEditingUserEmail(email);
+    setNewCreditsValue(currentCredits.toString());
+  };
+
+  // Update local state as the user types in the Credits input
+  const handleCreditsChange = (e) => {
+    setNewCreditsValue(e.target.value);
+  };
+
+  /**
+   * If user presses Enter in the input, we update Firestore 
+   * and also update our local userList state with the new credits.
+   */
+  const handleCreditsKeyDown = async (e, email) => {
+    if (e.key === "Enter") {
+      await updateCreditsInFirestore(email, parseInt(newCreditsValue, 10) || 0);
+    }
+  };
+
+  /**
+   * Actually writes the new credits to Firestore for the given email.
+   * Then updates our local state to reflect the new credits.
+   */
+  const updateCreditsInFirestore = async (email, newCredits) => {
+    try {
+      const userDetailsRef = doc(db, "ProjectBrainsReact", "User", email, "userdetails");
+      await updateDoc(userDetailsRef, { Credits: newCredits });
+
+      // Update local userList 
+      setUserList((prevList) =>
+        prevList.map((user) =>
+          user.Useremail === email ? { ...user, Credits: newCredits } : user
+        )
+      );
+    } catch (error) {
+      console.error("Error updating credits:", error);
+    } finally {
+      // Exit edit mode
+      setEditingUserEmail(null);
+      setNewCreditsValue("");
+    }
+  };
     
     const handleViewJD = async (userEmail, conversationNumber =1) => {
         const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversationNumber}`;
@@ -133,18 +179,36 @@ const InteractiveScreen = () => {
         const { Name, Useremail, Credits, ConversationNumber } = user;
 
         if (ConversationNumber > 1) {
-            return (
-               
-              <div className="interactive-screen-userlist-frame" key={Useremail}>
+          return (
+            <div className="interactive-screen-userlist-frame" key={Useremail}>
               {/* Left Section */}
               <div className="interactive-screen-userlist-frame-left">
                 <div className="interactive-screen-userlist-name">{Name}</div>
                 <div className="interactive-screen-userlist-name-partition"></div>
+    
                 <div className="interactive-screen-userlist-credits-container">
                   <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
                   <div className="interactive-screen-userlist-credits-info-container">
                     <div className="interactive-screen-userlist-credits-info-bg">
-                      <div className="interactive-screen-userlist-credits-info">{Credits}</div>
+                      {/* Show input if editingUserEmail matches this user's email */}
+                      {editingUserEmail === Useremail ? (
+                          <input
+                            className="interactive-screen-userlist-credits-input"
+                            type="number"
+                            value={newCreditsValue}
+                            onChange={handleCreditsChange}
+                            onKeyDown={(e) => handleCreditsKeyDown(e, Useremail)}
+                            onBlur={() => setEditingUserEmail(null)}
+                            autoFocus
+                          />
+                        ) : (
+                        <div
+                          className="interactive-screen-userlist-credits-info"
+                          onClick={() => handleCreditsClick(Useremail, Credits)}
+                        >
+                          {Credits}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -163,9 +227,7 @@ const InteractiveScreen = () => {
               </div>
             </div>
           );
-        
-        
-      };
+        }
     
 
         return (
@@ -177,9 +239,28 @@ const InteractiveScreen = () => {
               <div className="interactive-screen-userlist-credits-container">
                 <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
                 <div className="interactive-screen-userlist-credits-info-container">
-                  <div className="interactive-screen-userlist-credits-info-bg">
-                    <div className="interactive-screen-userlist-credits-info">{Credits}</div>
+                <div className="interactive-screen-userlist-credits-info-bg">
+                {/* Show input if editingUserEmail matches this user's email */}
+                {editingUserEmail === Useremail ? (
+                  <input
+                    className="interactive-screen-userlist-credits-input"
+                    type="number"
+                    value={newCreditsValue}
+                    onChange={handleCreditsChange}
+                    onKeyDown={(e) => handleCreditsKeyDown(e, Useremail)}
+                    onBlur={() => setEditingUserEmail(null)}
+                    autoFocus
+                    style={{ width: "60px" }}
+                  />
+                ) : (
+                  <div
+                    className="interactive-screen-userlist-credits-info"
+                    onClick={() => handleCreditsClick(Useremail, Credits)}
+                  >
+                    {Credits}
                   </div>
+                )}
+              </div>
                 </div>
               </div>
             </div>

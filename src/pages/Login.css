@@ -13,12 +13,15 @@
 
 .login-container {
     display: flex;
-    padding: 72.545px 32.242px;
+    padding: 5% 2%; /* Use percentage-based padding for scalability */
     flex-direction: column;
     align-items: center;
-    gap: 32.242px;
-    border-radius: 10.747px;
+    gap: 2rem; /* Use rem for consistent spacing */
+    border-radius: 1rem; /* Use rem for scalability */
     background: #F1F1F1;
+    max-width: 100%; /* Limit maximum width for responsiveness */
+    width: 450px; /* Fallback for standard width */
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 
@@ -74,49 +77,52 @@
 
 
 
-.password-box{
+.password-box {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 13.434px;
+    gap: 1rem; /* Use rem for scalable spacing */
+    width: 100%; /* Ensure it adjusts to the parent container */
+    max-width: 500px; /* Limit the maximum width */
 }
 
-.password-subbox{
+.password-subbox {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 13.434px;
-
+    gap: 1rem; /* Consistent scalable spacing */
+    width: 100%;
 }
 
-.password-label{
+.password-label {
     color: var(--Main-Black-Colour, #323335);
     font-feature-settings: 'calt' off;
     font-family: 'Aspekta-600';
-    font-size: 24px;
+    font-size: 1.5rem; /* Use rem for font size */
     font-style: normal;
     font-weight: 500;
-    line-height: 24.322px; /* 101.343% */
+    line-height: 1.5; /* Adjust for better readability */
 }
 
-.input-box-holder{
+.input-box-holder {
     display: flex;
-    height: 60px;
-    padding: 0px 16.121px;
+    height: 3rem; /* Use rem for height */
+    padding: 0 1rem; /* Adjust padding for scalability */
     align-items: center;
-    gap: 10.747px;
-    border-radius: 10.747px;
-    border: 1.343px solid #666;
+    gap: 0.75rem; /* Use rem for spacing */
+    border-radius: 0.75rem; /* Scalable border radius */
+    border: 1px solid #666; /* Simplify border thickness */
     background: #FFF;
-    min-width: 400px;    
+    width: 100%; /* Ensure it scales with the parent */
+    max-width: 500px; /* Limit the maximum width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.input-box-holder::placeholder{
-    width: 435.273px; 
+.input-box-holder::placeholder {
     color: #9E9E9E;
-    font-family: Roboto;
-    font-size: 21.495px;
+    font-family: Roboto, sans-serif; /* Fallback font for compatibility */
+    font-size: 1.25rem; /* Scalable font size */
     font-style: normal;
     font-weight: 400;
-    line-height: normal;       
+    line-height: 1.2; /* Adjust for better readability */
 }

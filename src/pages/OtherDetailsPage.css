@@ -1,10 +1,11 @@
 
   
 .Otherdetails-bg {
-    width: 100%; /* Make it take the full screen width */
-    max-width: 1920px; /* Optional: Limit maximum width */
+    width: 98%; /* Make it take the full screen width */
+    max-width: 100vw;
     margin: 0 auto; /* Center the content */
     background: #FFF;
+    overflow-x: hidden;
   }
   
   
@@ -253,34 +254,70 @@ gap: 12px;
 
 
 .addtional-feedback-text-container {
+  /* Basic styles */
   display: flex;
-  padding: 24px 16px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+  
+  /* Padding with responsive adjustments */
+  padding: clamp(16px, 2vw, 24px);
+  
+  /* Border styles */
   border-radius: 8px;
   border: 2px solid var(--Neutral-300, #D1D5DB);
+  
+  /* Responsive width logic */
+  width: min(80%, 1500px);
+  margin: 0 auto;
+  
+  /* Height controls */
+  min-height: clamp(10px, 10vh, 300px); 
+  max-height: clamp(20px, 20vh, 800px);
+  height: 10px;
+  
+  /* Box model */
+  box-sizing: border-box;
+  
+  /* Overflow handling */
+  overflow-y: auto;
+  overflow-x: auto;
+  
+  /* Minimum content width for larger screens */
+  min-width: min(1000px, 95vw);
+  
+  /* Scrollbar styling for better visibility */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
 
-  /* Responsive Width Logic */
-  width: 80%; /* Default width as percentage */
-  max-width: 1500px; /* Hard upper limit */
-  min-width: 1000px; /* Minimum width */
-  box-sizing: border-box; /* Ensure padding is included in width */
-  overflow: auto;
+/* Custom scrollbar styling for WebKit browsers */
+.addtional-feedback-text-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.addtional-feedback-text-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.addtional-feedback-text-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 
-.addtional-feedback-text{
-  width: 100%; /* Take up full available space */
-  max-width: 90%; /* Optional limit */
-  color: var(--d-9-d-9-d-9, #323335);
+
+/* Style for the text inside the container */
+.addtional-feedback-text {
+  width: 100%;
+  color: var(--main-black, #323335);
   font-family: 'Aspekta-400';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 162%; /* 32.4px */
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.62;
+  margin: 0;
+  padding: 0;
 }
-
 
 .user-statistics-container {
     display: flex; /* Enable horizontal layout */
@@ -290,6 +327,9 @@ gap: 12px;
     margin-top: 36px; /* Add top margin for spacing */
     flex-wrap: wrap; /* Wrap to the next line if necessary */
     margin-left: 124px;
+    height:100%;
+    min-height: 10vw;
+    max-height: 25vw;
   }
   
 
@@ -297,98 +337,135 @@ gap: 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 24px;
 }
 
-.user-statistics-viewcount-totalviews-container{
-
+.user-statistics-viewcount-totalviews-container {
   display: flex;
-  width: 80px;
-  height: 100px;
-  padding: 27.559px 49.213px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 11.811px;
+  /* Remove fixed width/height and use clamp or % to adjust to viewport */
+  width: clamp(2rem, 10vw, 8rem);
+  /* Let height auto-adjust to content, or set a max-height if needed */
+  /* height: auto; */
+  /* Use responsive padding */
+  padding: clamp(1rem, 3vw, 2rem);
+  gap: 0.75rem; /* around 12px, but “rem” is more scalable */
+
+  /* Keep the rest of the styles */
   border-radius: 8px;
   background: #323335;
-
+  /* If you still need a maximum width, you could do: max-width: 300px; */
+  height:100%;
+  min-height: 2vw;
+  max-height: 2.5vw;
 }
 
-.user-statistics-viewcount-totalviews-header{
-  width: 113px;
-  height: 25px;
-  flex-shrink: 0;
+.user-statistics-viewcount-totalviews-header {
+  /* Let the content determine the width—avoid hard-coded widths & heights */
+  /* width: auto; */
+  /* height: auto; */
+
+  /* Make the font scale between 1rem (16px) and 1.5rem (24px), 
+     or pick whichever min & max you prefer */
+  font-size: clamp(.5rem, 1vw, 1.5rem); 
+  line-height: 1.2;
   color: #FFF;
   text-align: center;
-  font-family: 'Aspekta-500';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 34.449px; /* 172.244% */
 
+  /* Font family and weight as before */
+  font-family: 'Aspekta-500';
+  font-weight: 500;
 }
 
-.user-statistics-viewcount-totalviews-text{
+.user-statistics-viewcount-totalviews-text {
   display: flex;
-  width: 89.075px;
-  height: 58.622px;
   flex-direction: column;
   justify-content: center;
-  flex-shrink: 0;
+  /* Again, remove fixed width/height to allow flexibility */
+  /* width: auto; */
+  /* height: auto; */
+
+  /* Scale font between 2rem (~32px) and 3rem (~48px), for example */
+  font-size: clamp(1rem, 2vw, 3rem);
+  line-height: 1.2;
   color: #FFF;
   text-align: center;
+
   font-family: 'Aspekta-500';
-  font-size: 52px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 114.199px; /* 219.613% */
 }
 
-.user-statistics-viewcount-share-container{
+
+.user-statistics-viewcount-share-container {
+  /* Flexible box container */
   display: flex;
-  width: 120px;
-  height: 120px;
-  padding: 27.559px 30.213px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 11.811px; 
+  gap: 0.75rem; /* ~12px, but "rem" is more scalable */
+
+  /* Responsive size: at least ~5rem, up to 7.5rem, scaling with viewport in between */
+  width: clamp(5rem, 10vw, 9rem);
+
+  /* Responsive padding: min 1rem, prefer 2vw, max 1.5rem */
+  padding: clamp(1rem, 2vw, 1.5rem);
+
   border-radius: 8px;
   background: #323335;
 
+  /* Remove fixed height. Let the container grow/shrink with its content. */
+  /* height: auto; */
+  height:100%;
+  min-height: 3vw;
+  max-height: 5vw;
 }
 
-.user-statistics-viewcount-share-header{
-  width: 100%;
-  height: 25px;
-  flex-shrink: 0;
+.user-statistics-viewcount-share-header {
+  /* Let the content determine width/height */
+  /* width: auto; */
+  /* height: auto; */
+
   color: #FFF;
   text-align: center;
   font-family: 'Aspekta-500';
-  font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 34.449px; /* 172.244% */
-  margin-top: -20px;
+
+  /* Scale font: min 1rem, grow with viewport to max 1.125rem (~18px) */
+  font-size: clamp(.5rem, 1vw, 1.125rem);
+  line-height: 1.2;
+
+  /* Remove negative margin to avoid layout shifting */
+  /* margin-top: -20px; */
+  margin-top: 0;
 }
 
-.user-statistics-viewcount-share-text{
+.user-statistics-viewcount-share-text {
+  /* Use flex only if you need special alignment inside */
   display: flex;
-  width: 80%;
-  height: 58.622px;
   flex-direction: column;
   justify-content: center;
-  flex-shrink: 0;
+
   color: #FFF;
   text-align: center;
   font-family: 'Aspekta-500';
-  font-size: 52px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 114.199px; /* 219.613% */
-  margin-top: 30px;
+
+  /* Large numeric display: min 1.5rem, up to 3rem, scaling with viewport. */
+  font-size: clamp(1rem, 3vw, 2rem);
+  line-height: 1.2;
+
+  /* Remove the fixed dimensions so it can be fluid */
+  /* width: 80%; */
+  /* height: 58.622px; */
+
+  /* Remove any top margin unless you truly need it */
+  /* margin-top: 30px; */
+  margin-top: 0;
 }
+
 
 .user-statistics-sharedby-container{
   display: flex;
@@ -396,10 +473,11 @@ gap: 12px;
   align-items: flex-start;
   border-radius: 8px;
   height:100%;
-  min-height: 350px;
-  max-height: 350px;
+  min-height: 12.5vw;
+  max-height: 16vw;
   background: #323335;
   overflow: auto;
+  border-radius: 8px;
 
 
 }
@@ -436,6 +514,7 @@ gap: 12px;
   gap: 10px; 
   border-bottom: 1px solid #A8A8A8;
   background: #323335;
+  border-radius: 8px;
 }
 
 

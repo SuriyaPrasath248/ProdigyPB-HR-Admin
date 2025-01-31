@@ -133,7 +133,7 @@ const ViewJDPage = () => {
               {data.LinkCreated}
             </div>
           </div>
-          <div className=".view-jd-copy-icon"  onClick={handleCopyLink}>
+          <div className="view-jd-copy-icon"  onClick={handleCopyLink}>
              < div className="view-jd-copy-border">
                 <img  src="/copy-icon.png" alt="Copy" className="view-jd-copy-img" />
             </div>

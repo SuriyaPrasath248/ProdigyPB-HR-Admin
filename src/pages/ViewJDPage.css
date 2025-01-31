@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Center children */
-  gap: 90px;
+  gap: 70px;
   padding-bottom: 81px;
   background-color: #FFF;
   width: 100%; /* Ensure it spans full width */
@@ -191,10 +191,10 @@
   padding:0px 20px 20px 40px;
   font-family: 'Aspekta-400';
   font-weight: 400;
-  font-size: 20px;
+  font-size: clamp(1.2rem, 3vw, 1.2rem);
   line-height: 1.6;
   color: #323335;
-  height: 45vh; /* Viewport height minus header height */
+  height: 98%; /* Viewport height minus header height */
   overflow-y: auto; /* Enable vertical scrolling for the content area */
   margin-top: 50px; /* Add margin to prevent overlap with the fixed header */
 
@@ -205,10 +205,12 @@
   justify-content: space-between;
   align-items: center;
   width: 95%; /* Match .chatbox width */
+  
   margin: 0 auto; /* Center */
   padding: 0 ; /* Match padding */
   box-sizing: border-box; /* Consistency */
   overflow: hidden; /* Prevent overflowing text */
+  gap:10px;
 }
 
 .view-jd-jd-link {
@@ -216,7 +218,9 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-  width: 96.5%; /* Match parent width */
+  width:80%;
+  max-width: 95%;
+  min-width: 94%;
   height: 59px;
   padding: 0px 26px;
   border-radius: 4px;

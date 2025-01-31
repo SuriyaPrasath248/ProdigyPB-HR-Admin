@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Settings.css";
 
@@ -29,10 +29,10 @@ const SettingsPage = () => {
 
   const formatPrompt = (prompt) => {
     return prompt
-      .replace(/(^|\n)([^\n:]+):/g, "\n<strong>$2:</strong>\n") // Format headings
-      .replace(/- /g, "<br> • ") // Convert dashes to bullet points
-      .replace(/(\.)(\s+)(?=[A-Z])/g, "$1\n") // Add line breaks after periods
-      .replace(/([^.]{80,}\.)\s*/g, "$1\n"); // Optional: Split long sentences
+      .replace(/(^|\n)([^\n:]+):/g, "<strong>$2:</strong>") // Format headings as bold
+      .replace(/• /g, "<br> • ") // Add line breaks before bullet points
+      .replace(/(\.)(\s+)(?=[A-Z])/g, "$1<br>") // Add line breaks after periods for new sentences
+      .replace(/([^.]{80,}\.)\s*/g, "$1<br>"); // Optional: Split long sentences
   };
 
   
@@ -94,7 +94,17 @@ const SettingsPage = () => {
              <div className="Settings-page-jd-rules-content">
               <div className="Settings-page-jd-rules-text">Interaction/Engagement Rules</div>
               <div className ="Settings-page-rules-upload-box">
-                <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+              <a
+                href="https://rag-document-eqodr6igxq-nw.a.run.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Settings-page-rules-upload-box"
+              >
+                <div className="Settings-page-rules-upload-box">
+                  <div className="Settings-page-rules-upload-box-text">Upload</div>
+                </div>
+              </a>
+
               </div>
             </div>
             <div className="Settings-page-rules-description">
@@ -113,7 +123,17 @@ const SettingsPage = () => {
             <div className="Settings-page-jd-rules-content">
               <div className="Settings-page-jd-rules-text">J.D. Creation Rules</div>
               <div className ="Settings-page-rules-upload-box">
-                <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+              <a
+                href="https://jdpromptrag-document-eqodr6igxq-nw.a.run.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Settings-page-rules-upload-box"
+              >
+                <div className="Settings-page-rules-upload-box">
+                  <div className="Settings-page-rules-upload-box-text">Upload</div>
+                </div>
+              </a>
+
               </div>
             </div>
             <div className="Settings-page-rules-description">
@@ -134,7 +154,17 @@ const SettingsPage = () => {
           <div className="Settings-page-jd-rules-content">
             <div className="Settings-page-jd-rules-text">Miscellaneous</div>
             <div className ="Settings-page-rules-upload-box">
-              <div className ="Settings-page-rules-upload-box-text ">Upload</div>
+            <a
+                href="https://miscrag-document-eqodr6igxq-nw.a.run.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Settings-page-rules-upload-box"
+              >
+                <div className="Settings-page-rules-upload-box">
+                  <div className="Settings-page-rules-upload-box-text">Upload</div>
+                </div>
+              </a>
+
             </div>
           </div>
           <div className="Settings-page-rules-description">

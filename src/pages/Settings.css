@@ -1,18 +1,20 @@
 .Settings-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #FFF; 
-  overflow: hidden;
+  /* Let this fill the entire page minus any header if needed. */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden; /* Hide any overflow outside the main container */
 }
 
 .Settings-page {
-  width: 100%;
-  height: 100%;
+  /* Fills remaining vertical space inside .Settings-body */
+  flex: 1 1 auto; 
+  display: flex;
+  flex-direction: column;
   background: #FFF;
-  overflow: hidden;
+  overflow: hidden; /* We'll manage scrolling in child elements */
 }
-
 
 
 
@@ -20,32 +22,30 @@
 
 .Settings-page-header {
   width: 100%;
-  
   padding: 15px 54px;
   border-bottom: 3px solid #D8D8D8;
- 
-  /* background: #e0e0e0; Light gray background for the header section */
+  /* This header will “shrink-wrap” around content height */
 }
 
 .Settings-page-content-background {
-  display: inline-flex;
+  flex: 1 1 auto; /* Fills the remaining space under header */
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
-  padding-top: 30px ;
-  padding-left: 56px;
-  /* Maybe give this a border or different shade to distinguish 
-  border: 1px solid #ccc; */
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-left: 3rem;
+  padding-right: 2rem; /* optional horizontal padding */
+  overflow: auto; /* If content is taller than available space, scroll here */
+  box-sizing: border-box;
 }
 
 .settings-header-text {
-  color: var(--Main-Black-Colour, #323335);
-  font-feature-settings: 'calt' off;
-  font-family: 'Aspekta-600';
-  font-size: 24px;
-  font-style: normal;
+  /* Use a slightly smaller or clamp() font if desired */
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 600;
-  line-height: 25.877px; /* 107.82% */
+  line-height: 1.2;
+  color: #323335;
+  font-family: 'Aspekta-600', sans-serif;
   padding-left: 10px;
 }
 
@@ -90,13 +90,18 @@
 
 
 
-.Settings-page-jd-content{
-  padding:0px 20px 20px 20px;
-  
-  height: 500px; /* or some fixed height */
-  overflow: auto;
+.Settings-page-jd-content {
+  /* Expand in the vertical direction if needed */
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0px 20px 20px 20px;
+  box-sizing: border-box;
 
+  /* Adjust font size down or make it responsive */
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.4;
 }
+
 
 .Settings-page-title-display-content{
   display: flex;
@@ -115,11 +120,12 @@
 }
 
 
-.Settings-page-title-content{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
+.Settings-page-title-text {
+  font-size: clamp(1rem, 2vw, 1.25rem); /* was 22px */
+  font-weight: 500;
+  line-height: 1.3;
+  color: #323335;
+  font-family: 'Aspekta-500', sans-serif;
 }
 
 .Settings-page-title-text{
@@ -142,22 +148,21 @@
   border-radius: 8px;
   border: 1px solid var(--Neutral-300, #D1D5DB);
   min-height: 30px;
-  
+  width:20%;
+  min-width: 25%;
+  max-width:50%;
   overflow: auto;
+  margin-top: 1rem;
 
 }
 
-.Settings-page-title-box-rules{
-  width: 759px;
-  height: 30px;
-  color: var(--d-9-d-9-d-9, #323335);
+.Settings-page-title-box-rules {
+  /* Instead of 20px, smaller or clamp */
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  line-height: 1.6;
+  color: #323335;
   font-family: 'Aspekta-400';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 162%; /* 32.4px */
 }
-
 
  /* Intro content */
  .Settings-page-intro-display-content {
@@ -190,9 +195,10 @@
   padding: 1rem; 
   width: 100%;
   max-width: 90vw;
+  min-height :10%;
 
   /* Set a maximum height so the box will not grow taller than this */
-  max-height: 7rem; /* Adjust as needed */
+  max-height: 5rem; /* Adjust as needed */
 
   border-radius: 8px;
   border: 1px solid var(--Neutral-300, #D1D5DB);
@@ -287,7 +293,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  border: 1.5px dashed #15202B;
+  
   background: #FFF;
   box-sizing: border-box;
   cursor: pointer;
@@ -295,9 +301,11 @@
 }
 
 .Settings-page-rules-upload-box:hover {
-  background: #ffffff; /* Slightly darker shade */
-  transform: scale(1.05); /* Enlarges the button slightly */
+  background: #ffffff;
+  transform: scale(1.005);
+  border-color: #15202B; /* Ensure border color matches */
 }
+
 .Settings-page-rules-upload-box-text {
   font-family: 'Aspekta-500';
   font-weight: 500;
@@ -380,23 +388,20 @@ align-items: center; /* Vertical centering */
 }
 
 .Settings-page-rules-popup {
-position: relative;
-width: 650px;
-height:650px;
-min-height:700px;;
-background-color: #323335;
-border-radius: 10px;
-padding: 20px;
-z-index: 1000;
-color: white;
-text-align: left; /* Align all text to the left */
-display: flex;
-flex-direction: column;
-justify-content: flex-start; /* Align content to the top */
-align-items: flex-start; /* Align content to the left */
-overflow: auto; /* Handle overflow for large content */
+  position: relative;
+  width: clamp(300px, 80vw, 650px);
+  min-height: 20vh;
+  max-height: 80vh; /* So it doesn’t exceed the viewport */
+  background-color: #323335;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: auto; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-
 .close-modal-button {
 position: absolute; /* Position it relative to the popup */
 top: 10px; /* Distance from the top */
@@ -421,12 +426,10 @@ background: #ff0000; /* Darker red on hover */
 
 
 .Settings-page-rules-popup h2 {
-font-size: 28px; /* Increased font size for better visibility */
-margin-bottom: 15px; /* Space below the heading */
-text-align: center; /* Center-align the heading text */
-width: 100%; /* Ensure it spans the full width of the popup */
-font-family: 'Aspekta-600';  
-position: relative; /* Prevent interference with the close button's absolute positioning */
+  font-size: clamp(1.25rem, 2vw, 1.75rem); /* ~20px to ~28px */
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
 }
 
 
@@ -463,3 +466,18 @@ z-index: 10; /* Ensure it appears above other content */
 .Settings-page-circular-button:hover {
 background-color: #949596; /* Slightly darker on hover */
 }
+
+
+a.Settings-page-rules-upload-box {
+  all: unset; /* Resets all link-specific styling */
+  display: flex; /* Ensure it behaves like a div */
+  justify-content: center; /* Center align contents */
+  align-items: center;
+  width: 100%; /* Match the dimensions of the div */
+  height: 100%;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+  border: 1.5px dashed #15202B;
+  border-radius: 8px;
+}
+
