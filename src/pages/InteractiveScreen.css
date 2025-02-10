@@ -126,17 +126,13 @@
   
 
   .interactive-screen-userlist-frame {
-    width: 100%;
+    width: 97%;
     min-height: 112px;
-    height: auto;
-    border-bottom: 2px solid #B5B5B5;
-    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: clamp(10px, 2vw, 20px);
     gap: 16px;
+    padding: 16px;
+    border-bottom: 2px solid #B5B5B5;
   }
 
   
@@ -218,13 +214,10 @@
 
 .interactive-screen-userlist-frame-right {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(8px, 1vw, 16px);
+  gap: 12px;
   align-items: center;
-  justify-content: flex-end;
-  flex: 0 1 auto;
+  flex-wrap: wrap;
 }
-
 
 .interactive-screen-userlist-otherdetails-button {
   color: var(--Main-Black-Colour, #323335);
@@ -319,16 +312,7 @@
 }
 
 
-.interactive-screen-userlist-viewtranscript-button,
-.interactive-screen-userlist-viewjd-button,
-.interactive-screen-userlist-viewall-button {
-  min-width: 100px;
-  max-width: 150px;
-  padding: clamp(8px, 1.5vw, 16px) clamp(12px, 2vw, 24px);
-  font-size: clamp(14px, 1.2vw, 18px);
-  white-space: nowrap;
-  height: auto;
-}
+
 
 .interactive-screen-userlist-viewall-button{
   display: flex;
@@ -481,5 +465,31 @@
 @container page (max-width: 768px) {
   .interactive-screen-userlist-frame {
     flex-direction: column;
+  }
+}
+
+.interactive-screen-userlist-viewtranscript-button,
+.interactive-screen-userlist-viewjd-button,
+.interactive-screen-userlist-viewall-button {
+  min-width: 90px;
+  max-width: 140px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/* Enhanced mobile breakpoint */
+@media screen and (max-width: 640px) {
+  .interactive-screen-userlist-frame {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .interactive-screen-userlist-frame-right {
+    width: 100%;
+  }
+  
+  .interactive-screen-userlist-buttons {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
