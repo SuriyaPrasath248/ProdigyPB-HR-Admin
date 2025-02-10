@@ -85,15 +85,16 @@ const ViewJDPage = () => {
   // Fetch job description data (replace with your actual data fetching method)
   
 
-  const formatJobDescription = (jd) => {
-    console.log("Formatting JD content for display");
-    if (!jd) return ""; // Handle undefined jd to avoid errors
-    return jd
-  
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Replace **text** with <strong>text</strong>
-      .replace(/(?:\s*-\s*)/g, '<br> • ') // Replace " - " with bullet points
-      .replace(/\n/g, '<br>'); // Replace newlines with HTML <br> tags
-  };
+const formatJobDescription = (jd) => {
+  console.log("Formatting JD content for display");
+  if (!jd) return ''; // Handle undefined jd to avoid errors
+  console.log("Formatting changes");
+  return jd
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Convert **text** to <strong>text</strong>
+    .replace(/^- /gm, '<br>• ') // Ensure bullets start correctly on new lines
+    .replace(/\n{2,}/g, '<br><br>') // Convert double newlines into paragraph breaks
+    .replace(/\n/g, '<br>'); // Convert single newlines into <br> to maintain spacing
+};
  
   
   return (
