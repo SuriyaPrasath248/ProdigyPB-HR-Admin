@@ -126,23 +126,26 @@
   
 
   .interactive-screen-userlist-frame {
-    width: 97%;
-    min-height: 112px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
+    width: 97%; /* Ensure full width */
+    height: 112px;
+    flex-shrink: 0;
     border-bottom: 2px solid #B5B5B5;
+    box-sizing: border-box;
+    display: flex; /* Flex layout for alignment */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center;
+    padding: 0 20px; /* Add padding to both sides */
   }
 
   
   .interactive-screen-userlist-frame-left {
     display: flex;
-    flex-wrap: wrap;
+    justify-content:flex-start;
     align-items: center;
-    gap: clamp(8px, 1vw, 14px);
-    flex: 1 1 auto;
-    min-width: 300px;
+    gap:14px;
+    width: 60%; /* Use full width */
+    padding: 0 20px; /* Optional horizontal padding */
+    box-sizing: border-box;
   }
   
 
@@ -151,7 +154,7 @@
     font-family: 'Aspekta-500';
     font-size: clamp(16px, 1.5vw, 22px);
     line-height: 1.2;
-    white-space: normal;
+    white-space: nowrap;
   }
 
 .interactive-screen-userlist-name-partition{
@@ -174,7 +177,7 @@
   font-family: 'Aspekta-500';
   font-size: clamp(16px, 1.5vw, 22px);
   line-height: 1.2;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .interactive-screen-userlist-credits-info-container{
@@ -214,9 +217,10 @@
 
 .interactive-screen-userlist-frame-right {
   display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
+  justify-content: flex-end; /* Align everything to the right */
+  align-items: center; /* Vertically align content */
+  gap: 16px; /* Space between buttons */
+  width: auto; /* Remove the full width */
 }
 
 .interactive-screen-userlist-otherdetails-button {
@@ -241,9 +245,8 @@
 
 .interactive-screen-userlist-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(8px, 1vw, 16px);
-  align-items: center;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .interactive-screen-userlist-viewtranscript-button {

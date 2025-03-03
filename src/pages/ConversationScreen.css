@@ -159,7 +159,7 @@
   
 
   .userlist-frame {
-    width: 100%; /* Ensure full width */
+    width: 97%; /* Ensure full width */
     height: 112px;
     flex-shrink: 0;
     border-bottom: 2px solid #B5B5B5;

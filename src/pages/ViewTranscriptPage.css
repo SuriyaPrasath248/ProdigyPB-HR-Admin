@@ -238,6 +238,7 @@
 }
 
 .transcript-ai-text {
+  white-space: pre-wrap; 
   width: 70%;
   color: #FFF;
   font-family: 'Aspekta-500';
@@ -246,6 +247,7 @@
   line-height: 1.5;
   text-align: left;
   box-sizing: border-box;
+  
 }
 
 /* User message container */
