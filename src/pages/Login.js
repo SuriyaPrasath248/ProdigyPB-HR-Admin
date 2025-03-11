@@ -9,7 +9,7 @@ const LoginPage = ({ onLoginSuccess }) => {
     const fetchPassword = async () => {
         try {
             console.log("Fetching admin password from Firestore...");
-            const docRef = doc(db, "Project Brains", "Admin"); // Reference to the Admin document
+            const docRef = doc(db, "ProjectBrainsReact", "Admin"); // Reference to the Admin document
             const docSnap = await getDoc(docRef); // Fetch the document
 
             if (docSnap.exists()) {
