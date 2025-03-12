@@ -95,7 +95,7 @@ const SettingsPage = () => {
               <div className="Settings-page-jd-rules-text">Interaction/Engagement Rules</div>
               <div className ="Settings-page-rules-upload-box">
               <a
-                href="https://rag-document-eqodr6igxq-nw.a.run.app/"
+                href="https://rag-document-376436174826.europe-west2.run.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="Settings-page-rules-upload-box"
@@ -124,7 +124,7 @@ const SettingsPage = () => {
               <div className="Settings-page-jd-rules-text">J.D. Creation Rules</div>
               <div className ="Settings-page-rules-upload-box">
               <a
-                href="https://jdpromptrag-document-eqodr6igxq-nw.a.run.app/"
+                href="https://jdpromptrag-document-376436174826.europe-west2.run.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="Settings-page-rules-upload-box"
@@ -155,7 +155,7 @@ const SettingsPage = () => {
             <div className="Settings-page-jd-rules-text">Miscellaneous</div>
             <div className ="Settings-page-rules-upload-box">
             <a
-                href="https://miscrag-document-eqodr6igxq-nw.a.run.app/"
+                href="https://miscrag-document-376436174826.europe-west2.run.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="Settings-page-rules-upload-box"
