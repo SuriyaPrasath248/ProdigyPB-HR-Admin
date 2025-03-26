@@ -14,48 +14,51 @@ const InteractiveScreen = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const userListRef = doc(db, "ProjectBrainsReact", "UserList");
-                const userListSnap = await getDoc(userListRef);
-
-                if (userListSnap.exists()) {
-                    const emailArray = userListSnap.data().email;
-
-                    const userDataPromises = emailArray.map(async (user) => {
-                        const userDetailsRef = doc(
-                            db,
-                            "ProjectBrainsReact",
-                            "User",
-                            user.EmailId,
-                            "userdetails"
-                        );
-                        const userDetailsSnap = await getDoc(userDetailsRef);
-
-                        if (userDetailsSnap.exists()) {
-                            const userData = userDetailsSnap.data();
-                            return {
-                                Name: userData.Name || user.displayName || "Unknown Name",
-                                Useremail: user.EmailId,
-                                Credits: userData.Credits ?? 0,
-                                ConversationNumber: userData.ConversationNumber ?? 0,
-                            };
-                        }
-                        return null;
-                    });
-
-                    const userData = await Promise.all(userDataPromises);
-                    setUserList(userData.filter((user) => user !== null));
-                }
-            } catch (error) {
-                console.error("Error fetching user details:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUsers();
-    }, []);
+      const fetchUsers = async () => {
+          try {
+              const userListRef = doc(db, "ProjectBrainsReact", "UserList");
+              const userListSnap = await getDoc(userListRef);
+  
+              if (userListSnap.exists()) {
+                  const emailArray = userListSnap.data().email;
+  
+                  const userDataPromises = emailArray.map(async (user) => {
+                      const userDetailsRef = doc(
+                          db,
+                          "ProjectBrainsReact",
+                          "User",
+                          user.EmailId,
+                          "userdetails"
+                      );
+                      const userDetailsSnap = await getDoc(userDetailsRef);
+  
+                      if (userDetailsSnap.exists()) {
+                          const userData = userDetailsSnap.data();
+                          return {
+                              Name: userData.Name || user.displayName || "Unknown Name",
+                              Useremail: user.EmailId,
+                              Credits: userData.Credits ?? 0,
+                              ConversationNumber: userData.ConversationNumber ?? 0,
+                              JobRole: userData.JobRole || null,
+                              CompanyName: userData.CompanyName || null,
+                              // Include any other fields you need from userData
+                          };
+                      }
+                      return null;
+                  });
+  
+                  const userData = await Promise.all(userDataPromises);
+                  setUserList(userData.filter((user) => user !== null));
+              }
+          } catch (error) {
+              console.error("Error fetching user details:", error);
+          } finally {
+              setLoading(false);
+          }
+      };
+  
+      fetchUsers();
+  }, []);
 
     const handleOtherDetails = async (userEmail, conversationNumber =1) => {
       console.log("handleOtherDetails triggered for:", userEmail); // Log email being passed
@@ -174,189 +177,193 @@ const InteractiveScreen = () => {
       navigate("/conversationpage", { state: { userEmail, conversationNumber } });
 
     };
-    
-    const renderUserRow = (user) => {
-        const { Name, Useremail, Credits, ConversationNumber } = user;
 
-        if (ConversationNumber > 1) {
-          return (
-            <div className="interactive-screen-userlist-frame" key={Useremail}>
-              {/* Left Section */}
-              <div className="interactive-screen-userlist-frame-left">
-                <div className="interactive-screen-userlist-name">{Name}</div>
-                <div className="interactive-screen-userlist-name-partition"></div>
-    
-                <div className="interactive-screen-userlist-credits-container">
-                  <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
-                  <div className="interactive-screen-userlist-credits-info-container">
-                    <div className="interactive-screen-userlist-credits-info-bg">
-                      {/* Show input if editingUserEmail matches this user's email */}
-                      {editingUserEmail === Useremail ? (
-                          <input
-                            className="interactive-screen-userlist-credits-input"
-                            type="number"
-                            value={newCreditsValue}
-                            onChange={handleCreditsChange}
-                            onKeyDown={(e) => handleCreditsKeyDown(e, Useremail)}
-                            onBlur={() => setEditingUserEmail(null)}
-                            autoFocus
-                          />
-                        ) : (
-                        <div
-                          className="interactive-screen-userlist-credits-info"
-                          onClick={() => handleCreditsClick(Useremail, Credits)}
-                        >
-                          {Credits}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              {/* Right Section */}
-              <div className="interactive-screen-userlist-frame-right">
-                <div className="interactive-screen-userlist-buttons">
-                  <div
-                    className="interactive-screen-userlist-viewall-button"
-                    onClick={() => handleViewAll(Useremail, ConversationNumber)}
-                  >
-                    <div className="interactive-screen-userlist-viewall-button-text">View All</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        }
-    
 
-        return (
-            <div className="interactive-screen-userlist-frame" key={Useremail}>
-            {/* Left Section */}
-            <div className="interactive-screen-userlist-frame-left">
-              <div className="interactive-screen-userlist-name">{Name}</div>
-              <div className="interactive-screen-userlist-name-partition"></div>
-              <div className="interactive-screen-userlist-credits-container">
-                <div className="interactive-screen-userlist-credits-text">Credits Remaining -</div>
-                <div className="interactive-screen-userlist-credits-info-container">
-                <div className="interactive-screen-userlist-credits-info-bg">
-                {/* Show input if editingUserEmail matches this user's email */}
-                {editingUserEmail === Useremail ? (
-                  <input
-                    className="interactive-screen-userlist-credits-input"
-                    type="number"
-                    value={newCreditsValue}
-                    onChange={handleCreditsChange}
-                    onKeyDown={(e) => handleCreditsKeyDown(e, Useremail)}
-                    onBlur={() => setEditingUserEmail(null)}
-                    autoFocus
-                    style={{ width: "60px" }}
-                  />
-                ) : (
-                  <div
-                    className="interactive-screen-userlist-credits-info"
-                    onClick={() => handleCreditsClick(Useremail, Credits)}
-                  >
-                    {Credits}
-                  </div>
-                )}
-              </div>
-                </div>
-              </div>
-            </div>
-      
-            {/* Right Section */}
-            <div className="interactive-screen-userlist-frame-right">
-              <div
-                className="interactive-screen-userlist-otherdetails-button"
-                onClick={() => handleOtherDetails(Useremail)}
-              >
-                Other Details
-              </div>
-      
-              <div className="interactive-screen-userlist-buttons">
-                <div
-                  className="interactive-screen-userlist-viewtranscript-button"
-                  onClick={() => handleViewTranscript(Useremail)}
-                >
-                  <div className="interactive-screen-userlist-viewtranscript-button-text">View Transcript</div>
-                </div>
-                <div
-                  className="interactive-screen-userlist-viewjd-button"
-                  onClick={() => handleViewJD(Useremail)}
-                >
-                  <div className="interactive-screen-userlist-viewjd-button-text">View Final J.D.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-    };
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-    
     const handleSettingsClick = async () => {
-        console.log("handleSettingsClick triggered");
-        try {
-            const docRef = doc(db, "ProjectBrainsReact", "Admin"); // Reference to the Admin document
-            console.log("Fetching Admin document...");
-            const docSnap = await getDoc(docRef);
+      console.log("handleSettingsClick triggered");
+      try {
+          const docRef = doc(db, "ProjectBrainsReact", "Admin"); // Reference to the Admin document
+          console.log("Fetching Admin document...");
+          const docSnap = await getDoc(docRef);
+  
+          if (docSnap.exists()) {
+              console.log("Admin document fetched successfully:", docSnap.data());
+              // Use correct property names (case-sensitive)
+              const introtitle = docSnap.data().IntroTitle; 
+              const intromessage = docSnap.data().IntroMessage;
+              const interactionrules = docSnap.data().InteractionPrompt;
+              const resultsprompt = docSnap.data().ResultsPrompt;
+              const miscellaneousprompt = docSnap.data().MiscPrompt;
+              console.log("Navigating to Settings page with data:", { introtitle, intromessage, interactionrules, resultsprompt, miscellaneousprompt });
+              navigate("/Settings", { state: { introtitle, intromessage, interactionrules, resultsprompt, miscellaneousprompt } });
+          } else {
+              console.error("Admin document not found.");
+          }
+      } catch (error) {
+          console.error("Error fetching admin data:", error);
+      }
+  };
     
-            if (docSnap.exists()) {
-                console.log("Admin document fetched successfully:", docSnap.data());
-                // Use correct property names (case-sensitive)
-                const introtitle = docSnap.data().IntroTitle; 
-                const intromessage = docSnap.data().IntroMessage;
-                const interactionrules = docSnap.data().InteractionPrompt;
-                const resultsprompt = docSnap.data().ResultsPrompt;
-                const miscellaneousprompt = docSnap.data().MiscPrompt;
-                console.log("Navigating to Settings page with data:", { introtitle, intromessage, interactionrules, resultsprompt, miscellaneousprompt });
-                navigate("/Settings", { state: { introtitle, intromessage, interactionrules, resultsprompt, miscellaneousprompt } });
-            } else {
-                console.error("Admin document not found.");
-            }
-        } catch (error) {
-            console.error("Error fetching admin data:", error);
-        }
-    };
-    
-    
-    
+  const renderUserRow = (user) => {
+    const { Name, Useremail, Credits, CreditsUsed = 0, ConversationNumber, Rating = "N/A" } = user;
 
     return (
-        <div className="interactive-screen-page-container">
-        <div className="interactive-screen-page">
+      <div className="interactive-screen-userlist-table-row" key={Useremail}>
+        <div className="interactive-screen-table-col interactive-screen-table-data-col-name" >
+          {Name}
+        </div>
+        
+        <div className="interactive-screen-table-col interactive-screen-table-data-col-credits-used">
+          {CreditsUsed}
+        </div>
+        
+        <div className="interactive-screen-table-col interactive-screen-table-data-col-credits-remaining">
+          {editingUserEmail === Useremail ? (
+            <input
+              className="interactive-screen-userlist-credits-input"
+              type="number"
+              value={newCreditsValue}
+              onChange={handleCreditsChange}
+              onKeyDown={(e) => handleCreditsKeyDown(e, Useremail)}
+              onBlur={() => setEditingUserEmail(null)}
+              autoFocus
+            />
+          ) : (
+            <div 
+              className="interactive-screen-credits-box"
+              onClick={() => handleCreditsClick(Useremail, Credits)}
+            >
+              {Credits}
+            </div>
+          )}
+        </div>
+        
+        <div className="interactive-screen-table-col interactive-screen-table-data-col-rating">
+          {Rating}
+        </div>
+        
+        <div className="interactive-screen-table-col interactive-screen-table-data-col-actions">
+          {/* Rest of your actions remain the same */}
+          <div className="interactive-screen-userlist-otherdetails-button" onClick={() => handleOtherDetails(Useremail)}>
+            Other Details
+          </div>
   
-          {/* Header Section */}
-          <div className="interactive-screen-header">
-            <div className="interactive-screen-header-inside">
-              <div className="interactive-screen-header-left">
-                <div className="interactive-screen-header-left-text"> User History</div>
-               
+          {ConversationNumber <= 1 ? (
+            <>
+         <div className="interactive-screen-profile-container">
+            <div className="interactive-screen-profile-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div className="interactive-screen-profile-card">
+              <div className="interactive-screen-profile-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
               </div>
-              <div className="interactive-screen-header-right" >
-                <div className="interactive-screen-settings-container">
-                    <img src="/settings.png" alt="Settings" className="interactive-screen-settings-img" onClick={handleSettingsClick} />
+              <div className="interactive-screen-profile-info">
+                <h3 className="interactive-screen-profile-name">{Name}</h3>
+                <p className="interactive-screen-profile-job">{user.JobRole || "Not Found"}</p>
+                <p className="interactive-screen-profile-company">{user.CompanyName || "Not Found"}</p>
+                <a href={`mailto:${Useremail}`} className="interactive-screen-profile-email">{Useremail}</a>
+              </div>
+            </div>
+          </div>
+              
+              <div className="interactive-screen-userlist-viewtranscript-button" onClick={() => handleViewTranscript(Useremail)}>
+                View Transcript
+              </div>
+              
+              <div className="interactive-screen-userlist-viewjd-button" onClick={() => handleViewJD(Useremail)}>
+                View Final J.D.
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="interactive-screen-profile-container">
+                <div className="interactive-screen-profile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
                 </div>
-             </div>
-
-            </div>
-          </div>
-  
-          {/* User List Container */}
-          <div className="interactive-screen-userlist-container">
-            <div className="interactive-screen-userlist-container-inside">
-              {/* Add dynamic user content or components here */}
-              {userList.map((user) => renderUserRow(user))}
-            </div>
-          </div>
-          
+                <div className="interactive-screen-profile-card">
+                  <div className="interactive-screen-profile-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div className="interactive-screen-profile-info">
+                    <h3 className="interactive-screen-profile-name">{Name}</h3>
+                    <p className="interactive-screen-profile-job">{user.JobRole || "Not Found"}</p>
+                    <p className="interactive-screen-profile-company">{user.CompanyName || "Not Found"}</p>
+                    <a href={`mailto:${Useremail}`} className="interactive-screen-profile-email">{Useremail}</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="interactive-screen-userlist-viewall-button" onClick={() => handleViewAll(Useremail, ConversationNumber)}>
+                View All
+                
+              </div>
+            </>
+          )}
         </div>
       </div>
-   
     );
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="interactive-screen-page-container">
+      <div className="interactive-screen-page">
+        {/* Header Section */}
+        <div className="interactive-screen-header">
+          <div className="interactive-screen-header-inside">
+            <div className="interactive-screen-header-left">
+              <div className="interactive-screen-header-left-text">User History</div>
+            </div>
+            <div className="interactive-screen-header-right">
+              <div className="interactive-screen-settings-container">
+                <img
+                  src="/settings.png"
+                  alt="Settings"
+                  className="interactive-screen-settings-img"
+                  onClick={handleSettingsClick}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* User List Container */}
+        <div className="interactive-screen-userlist-container">
+          {/* Table Header */}
+          <div className="interactive-screen-userlist-table-header">
+              <div className="interactive-screen-table-col interactive-screen-table-header-col-name">
+                Name
+              </div>
+              <div className="interactive-screen-table-col interactive-screen-table-header-col-credits-used">Credits Used</div>
+              <div className="interactive-screen-table-col interactive-screen-table-header-col-credits-remaining">Credits Remaining</div>
+              <div className="interactive-screen-table-col interactive-screen-table-header-col-rating">Avg Rating</div>
+              <div className="interactive-screen-table-col interactive-screen-table-header-col-actions"></div>
+          </div>
+          
+          {/* User List Table */}
+          <div className="interactive-screen-userlist-table">
+            {userList.map((user) => renderUserRow(user))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default InteractiveScreen;

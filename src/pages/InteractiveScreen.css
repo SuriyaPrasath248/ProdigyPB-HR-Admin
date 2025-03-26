@@ -1,6 +1,5 @@
 /* InteractiveScreen.css */
 
-
 .interactive-screen-page-container {
   position: absolute;
   top: 0;
@@ -31,7 +30,7 @@
   justify-content: space-between;
   align-items: center;
   padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 54px);
-  border-bottom: 3px solid #D8D8D8;
+  border-bottom: 1px solid #E5E5E5;
   margin: 0 auto;
   box-sizing: border-box;
   position: sticky;
@@ -39,7 +38,6 @@
   background: #FFF;
   z-index: 10;
 }
-
 
 .interactive-screen-header-inside {
   display: flex;
@@ -49,7 +47,6 @@
   padding: 0 clamp(10px, 2vw, 20px);
   box-sizing: border-box;
 }
-
 
 .interactive-screen-header-left {
   display: flex;
@@ -67,432 +64,411 @@
   white-space: nowrap;
 }
 
-
-  .interactive-screen-header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px; /* Add spacing between the buttons */
-    margin-left: auto; 
-    /* background: #f0c0c0;  Light red shade */
-  }
-  
-  .interactive-screen-userlist-container {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: clamp(10px, 2vw, 20px);
-    height: auto;
-    max-height: calc(100vh - 200px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    gap: clamp(10px, 2vh, 20px);
-    margin-top: clamp(-20px, -3vh, -40px);
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-
-
-  .interactive-screen-userlist-container-inside {
-    width: 100%;
-    height: auto;
-    min-height: 200px;
-    max-height: calc(100vh - 250px);
-    padding: clamp(25px, 3vh, 50px) 0 clamp(10px, 2vh, 20px) 0;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(15px, 2vh, 25px);
-  }
-  
-  .interactive-screen-settings-container {
-      display: flex;
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
-      width: 50px; /* Set fixed width */
-      height: 50px; /* Set fixed height */
-      padding: 0; /* Remove unnecessary padding */
-      overflow: hidden; /* Prevent overflow */
-      border-radius: 2px; /* Optional: make it circular */
-      cursor: pointer;
-  }
-  
-  .interactive-screen-settings-img {
-      width: 100%; /* Image takes up full container */
-      height: 100%;
-      object-fit: contain; /* Maintain aspect ratio */
-  }
-  
-  
-
-  .interactive-screen-userlist-frame {
-    width: 97%; /* Ensure full width */
-    height: 112px;
-    flex-shrink: 0;
-    border-bottom: 2px solid #B5B5B5;
-    box-sizing: border-box;
-    display: flex; /* Flex layout for alignment */
-    justify-content: space-between; /* Space items evenly */
-    align-items: center;
-    padding: 0 20px; /* Add padding to both sides */
-  }
-
-  
-  .interactive-screen-userlist-frame-left {
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-    gap:14px;
-    width: 60%; /* Use full width */
-    padding: 0 20px; /* Optional horizontal padding */
-    box-sizing: border-box;
-  }
-  
-
-  .interactive-screen-userlist-name {
-    color: #323335;
-    font-family: 'Aspekta-500';
-    font-size: clamp(16px, 1.5vw, 22px);
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-.interactive-screen-userlist-name-partition{
-    min-width: 1.8px;
-    max-width: 1.8px;
-    height: 55px;
-    background: #424242;
-}
-
-.interactive-screen-userlist-credits-container{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-   
-
-}
-
-.interactive-screen-userlist-credits-text {
-  color: #323335;
-  font-family: 'Aspekta-500';
-  font-size: clamp(16px, 1.5vw, 22px);
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-.interactive-screen-userlist-credits-info-container{
-    display: flex;
-    width: 318px;
-    height: 50px;
-    padding-right: 268px;
-    align-items: center;
-    
-
-}
-
-.interactive-screen-userlist-credits-info-bg{
-    display: flex;
-    width: 15px;
-    height: 15px;
-    padding: 16px;
-    border-radius: 6px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0; 
-    border: 2px solid #5a70d9;
-}
-
-.interactive-screen-userlist-credits-info{
-
-    color: var(--Main-Black-Colour, #323335);
-    font-feature-settings: 'calt' off;
-    font-family: 'Aspekta-400';
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25.877px; /* 117.621% */ 
-    
-}
-
-.interactive-screen-userlist-frame-right {
+.interactive-screen-header-right {
   display: flex;
-  justify-content: flex-end; /* Align everything to the right */
-  align-items: center; /* Vertically align content */
-  gap: 16px; /* Space between buttons */
-  width: auto; /* Remove the full width */
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
 }
 
-.interactive-screen-userlist-otherdetails-button {
-  color: var(--Main-Black-Colour, #323335);
-  font-feature-settings: 'calt' off;
-  font-family: 'Inter-semibold';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.16px;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: auto;
-  text-underline-offset: auto;
-  text-underline-position: from-font;
-  white-space: nowrap;
+.interactive-screen-settings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 4px;
   cursor: pointer;
 }
 
+.interactive-screen-settings-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
 
-.interactive-screen-userlist-buttons {
+/* Table Layout Styles */
+.interactive-screen-userlist-container {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  flex-direction: column;
+  align-items: stretch;
+  padding: clamp(10px, 2vw, 20px);
+  width: 100%;
+  box-sizing: border-box;
+  /* Remove height and overflow restrictions from container */
+  overflow: visible !important;
+}
+
+
+.interactive-screen-userlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Keep original margin */
+  max-height: calc(100vh - 180px); /* Dynamic height based on viewport height minus header and other elements */
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block; /* This is needed for overflow to work */
+}
+
+.interactive-screen-userlist-table-header {
+  display: flex;
+  width: 100%;
+  padding: 15px 20px;
+  border-bottom: 1px solid #E5E5E5;
+  background-color: #F9F9F9;
+  font-family: 'Aspekta-500';
+  color: #6E6E6E;
+  font-size: 14px;
+}
+
+.interactive-screen-userlist-table-row {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #E5E5E5;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.interactive-screen-table-col {
+  display: flex;
+  align-items: center;
+}
+
+/* Table Header Styles */
+.interactive-screen-table-header-col-name {
+  width: 20%;
+  font-family: 'Aspekta-500';
+  font-size: 16px;
+  color: #6E6E6E;
+ 
+  letter-spacing: 0.5px;
+}
+
+.interactive-screen-table-header-col-credits-used,
+.interactive-screen-table-header-col-credits-remaining,
+.interactive-screen-table-header-col-rating {
+  width: 13%;
+  font-family: 'Aspekta-500';
+  font-size: 16px;
+  color: #6E6E6E;
+  
+  letter-spacing: 0.5px;
+}
+
+.interactive-screen-table-header-col-actions {
+  width: 40%;
+}
+
+/* Table Data Styles */
+.interactive-screen-table-data-col-name {
+  width: 22%;  /* Increased to 20% as requested */
+  font-family: 'Aspekta-600';
+  font-size: 17px;
+  color: #323335;
+  white-space: normal;  /* Allow text to wrap */
+  overflow: visible;    /* Show overflowing content */
+  word-wrap: break-word; /* Break long words if needed */
+  word-break: break-word; /* Alternative for breaking long words */
+  padding-right: 10px;  /* Add some right padding for spacing */
+  position: relative;   /* Important for positioning */
+  line-height: 1.3; 
+}
+
+.interactive-screen-table-data-col-name:hover::after {
+  display: none;
+}
+
+.interactive-screen-table-data-col-credits-used,
+.interactive-screen-table-data-col-credits-remaining {
+  font-family: 'Aspekta-500';
+  font-size: 18px;
+  color: #6E85F2;
+}
+
+.interactive-screen-table-data-col-credits-used,
+.interactive-screen-table-data-col-credits-remaining,
+.interactive-screen-table-data-col-rating {
+  width: 13%;  /* Adjusted from 15% to account for name being 20% */
+  font-family: 'Aspekta-500';
+  font-size: 18px;
+  align-items:end;
+}
+
+.interactive-screen-table-data-col-actions {
+  width: 41%;  /* Adjusted to ensure total is 100% */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding-right: 15px;
+}
+
+
+.interactive-screen-credits-box {
+  display: flex;
+  width: auto;
+  min-width: 20px;
+  height: auto;
+  padding: 8px 12px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #6E85F2;
+  border-radius: 4px;
+  color: #000000;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.interactive-screen-profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001; /* Slightly higher than container */
+}
+
+.interactive-screen-profile-icon svg {
+  width: 18px;
+  height: 18px;
+  color: #6E6E6E;
+}
+
+.interactive-screen-userlist-otherdetails-button {
+  color: #323335;
+  font-family: 'Inter-semibold';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.16px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-right: 15px;
+  white-space: nowrap;
 }
 
 .interactive-screen-userlist-viewtranscript-button {
   display: flex;
-  width: 128px;
-  padding: 16px 24px;
+  padding: 12px 20px;
   justify-content: center;
-  align-items: flex-end;
-  gap: 8px;
+  align-items: center;
   border-radius: 4px;
-  border: 2px solid #6A6A6A; /* Add a border */
-  background: transparent; /* Make the background transparent */
-   /* Text color matches the border */
-  /* Ensure the padding does not increase the element size */
+  border: 2px solid #6A6A6A;
+  background: transparent;
+  color: #323335;
+  font-family: 'Inter-semibold';
   font-size: 16px;
   font-weight: 600;
-  text-align: center;
   cursor: pointer;
   white-space: nowrap;
+  margin-right: 10px;
 }
 
-.interactive-screen-userlist-viewtranscript-button:hover {
-  background: #c3c4c8; /* Add hover effect */
-  color: white; /* Change text color on hover */
-}
-
-
-.interactive-screen-userlist-viewtranscript-button-text{
-  width: 120px; 
-  color: var(--Main-Black-Colour, #323335);
-  font-feature-settings: 'calt' off;
-  font-family: 'Inter-semibold';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.16px;  
-  padding-right: 12px;  
-}
-
-.interactive-screen-userlist-viewjd-button{
+.interactive-screen-userlist-viewjd-button {
   display: flex;
-  width: 128px;
-  padding: 16px 24px;
+  padding: 12px 20px;
   justify-content: center;
-  align-items: flex-end;
-  gap: 8px;
-  border-radius: 4px;
-  background: #6E85F2;
-  cursor: pointer;
-}
-
-.interactive-screen-userlist-viewjd-button-text{
-  color: #FFF;
-  font-feature-settings: 'calt' off;
-  font-family: 'Inter-semibold';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 133.333% */
-  letter-spacing: -0.18px; 
-}
-.interactive-screen-userlist-viewjd-button:hover {
-  background: #92a3f4; /* Add hover effect */
-  color: white; /* Change text color on hover */
-}
-
-
-
-
-.interactive-screen-userlist-viewall-button{
-  display: flex;
-  width: 128px;
-  padding: 16px 24px;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 8px;
-  border-radius: 4px;
-  background: #6E85F2;
-  cursor: pointer;
-}
-
-.interactive-screen-userlist-viewall-button-text{
-  color: #FFF;
-  font-feature-settings: 'calt' off;
-  font-family: 'Inter-semibold';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 133.333% */
-  letter-spacing: -0.18px; 
-}
-.interactive-screen-userlist-viewall-button:hover {
-  background: #92a3f4; /* Add hover effect */
-  color: white; /* Change text color on hover */
-}
-
-
-
-.interactive-screen-user-list {
-  /* Remove flex-grow and rely on natural page flow */
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Space between user rows */
-  padding: 20px;
-  width: 100%; /* Full width */
-  box-sizing: border-box; /* Include padding and borders in width */
-  background-color: #ffffff;
-}
-
-/* Individual user rows */
-.interactive-screen-user-row {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px; /* Increased padding for spacing */
-  margin-bottom: 15px; /* Add margin between rows */
-  border: 1px solid #ddd;
-  border-radius: 8px; /* Rounded corners for rows */
-  background-color: #f9f9f9;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-}
-
-/* User info styles */
-.interactive-screen-user-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px; /* Spacing between user name and credits */
-}
-
-.interactive-screen-user-name {
+  border-radius: 4px;
+  background: #6E85F2;
+  color: #FFF;
+  font-family: 'Inter-semibold';
   font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-.interactive-screen-user-credits {
-  font-size: 14px;
-  color: #555;
-}
-
-/* Actions container */
-.interactive-screen-user-actions {
-  display: flex;
-  gap: 10px; /* Space between buttons */
-}
-
-/* Button styles */
-.interactive-screen-blue-button {
-  background-color: #6e85f2;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  margin: 0 5px; /* Add space between buttons */
+  white-space: nowrap;
+  margin-right: 15px;
+  width: 114px;
 }
 
-.interactive-screen-blue-button:hover {
-  background-color: #5a70d9;
+.interactive-screen-userlist-viewall-button {
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: #6E85F2;
+  color: #FFF;
+  font-family: 'Inter-semibold';
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 15px;
+  width: 114px;
 }
+
 
 .interactive-screen-userlist-credits-input {
-  width: 2.4rem;             /* Adjust so it’s similar to your existing box width */
-  height: 2.4rem;              /* If your box has a set height */
-  font-size: 1.25rem;           /* Match your existing text size */
-  text-align: center;        /* Center the number */
-  color: #ffffff;            /* Match your text color */
-  background-color: #3e3e3e;    /* Or whatever your box background is */
-  border: 2px solid #1e1b51; /* Purple border to mimic your "blue outline" style */
-  border-radius: 4px;        /* Match the rounding you have on your .info-bg box */
-
-  /* Remove default padding/margins if needed */
-  padding: 0.25rem;
+  width: 40px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+  color: #6E85F2;
+  background-color: #F0F0F0;
+  border: 1px solid #D8D8D8;
+  border-radius: 4px;
+  padding: 0;
   margin: 0;
-
-  /* If your existing .credits-info font is something else, include that here */
-  font-family: 'Aspekta-400', sans-serif;
+  font-family: 'Aspekta-500';
 }
 
-/* Hide the native up/down arrows in Chrome, Safari, Edge, Opera */
 .interactive-screen-userlist-credits-input::-webkit-inner-spin-button,
 .interactive-screen-userlist-credits-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Also hide arrows in Firefox */
 .interactive-screen-userlist-credits-input[type=number] {
-  -moz-appearance: textfield; /* or -moz-appearance: none; in older versions */
+  -moz-appearance: textfield;
 }
 
 @media screen and (max-width: 768px) {
-  .interactive-screen-userlist-frame {
+  .interactive-screen-userlist-table-header,
+  .interactive-screen-userlist-table-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
   }
 
-  .interactive-screen-userlist-frame-right {
-    width: 100%;
+  .interactive-screen-table-col,
+  .interactive-screen-table-header-col-name,
+  .interactive-screen-table-header-col-credits-used,
+  .interactive-screen-table-header-col-credits-remaining,
+  .interactive-screen-table-header-col-rating,
+  .interactive-screen-table-header-col-actions,
+  .interactive-screen-table-data-col-name,
+  .interactive-screen-table-data-col-credits-used,
+  .interactive-screen-table-data-col-credits-remaining,
+  .interactive-screen-table-data-col-rating,
+  .interactive-screen-table-data-col-actions {
+    width: 100% !important;
+  }
+
+  .interactive-screen-table-data-col-actions {
     justify-content: flex-start;
+    margin-top: 10px;
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .interactive-screen-userlist-frame {
-    padding: 1rem;
-  }
-  
-  .interactive-screen-userlist-name,
-  .interactive-screen-userlist-credits-text {
-    font-size: 18px;
-  }
-}
-@container page (max-width: 768px) {
-  .interactive-screen-userlist-frame {
-    flex-direction: column;
-  }
+/* Profile hover card styles */
+.interactive-screen-profile-container {
+  position: relative;
+  overflow: visible;
 }
 
-.interactive-screen-userlist-viewtranscript-button,
-.interactive-screen-userlist-viewjd-button,
-.interactive-screen-userlist-viewall-button {
-  min-width: 90px;
-  max-width: 140px;
-  padding: 12px 16px;
-  font-size: 16px;
+.interactive-screen-profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
 }
 
-/* Enhanced mobile breakpoint */
-@media screen and (max-width: 640px) {
-  .interactive-screen-userlist-frame {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .interactive-screen-userlist-frame-right {
-    width: 100%;
-  }
-  
-  .interactive-screen-userlist-buttons {
-    width: 100%;
-    justify-content: flex-start;
-  }
+.interactive-screen-profile-card {
+  display: none;
+  position: absolute;
+  top: -90px; /* Position higher to avoid getting cut off */
+  left: -380px;
+  width: 360px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 16px;
+}
+
+.interactive-screen-profile-container:hover .interactive-screen-profile-card {
+  display: flex;
+}
+
+.interactive-screen-profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.interactive-screen-profile-avatar svg {
+  width: 40px;
+  height: 40px;
+  color: #b3b3b3;
+}
+
+.interactive-screen-profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.interactive-screen-profile-name {
+  font-family: 'Aspekta-600';
+  font-size: 18px;
+  color: #323335;
+  margin: 0 0 2px 0;
+}
+
+.interactive-screen-profile-job {
+  font-family: 'Aspekta-500';
+  font-size: 15px;
+  color: #323335;
+  margin: 0 0 2px 0;
+}
+
+.interactive-screen-profile-company {
+  font-family: 'Aspekta-400';
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 4px 0;
+}
+
+.interactive-screen-profile-email {
+  font-family: 'Aspekta-400';
+  font-size: 14px;
+  color: #6E85F2;
+  text-decoration: underline;
+  margin: 0;
+  word-break: break-all;
+}
+
+.interactive-screen-userlist-table-row {
+  overflow: visible !important;
+  position: relative;
+}
+
+/* Ensure table doesn't clip overflow content */
+.interactive-screen-userlist-table {
+  overflow: visible !important;
+}
+
+/* Make parent container also respect overflow */
+.interactive-screen-userlist-container {
+  overflow: visible !important;
+}
+
+/* Fix for profile card positioning */
+.interactive-screen-profile-container {
+  position: relative;
+  z-index: 1000; /* High z-index to ensure it appears on top */
+  overflow: visible;
 }

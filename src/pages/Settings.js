@@ -1,4 +1,4 @@
- import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Settings.css";
 
@@ -10,7 +10,44 @@ const SettingsPage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to control popup visibility
   const [popupContent, setPopupContent] = useState(""); // State for popup content
   const [currentCategory, setCurrentCategory] = useState(""); // State for popup category
+  const [isLLMDropdownOpen, setIsLLMDropdownOpen] = useState(false);
+  const [selectedLLM, setSelectedLLM] = useState(null);
+  const llmDropdownRef = useRef(null);
 
+  const llmOptions = [
+    'Open AI',
+    'Gemini',
+    'Anthropic'
+  ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (llmDropdownRef.current && !llmDropdownRef.current.contains(event.target)) {
+        setIsLLMDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleLLMDropdown = (e) => {
+    e.stopPropagation();
+    console.log("Toggling dropdown. Current state:", isLLMDropdownOpen);
+    setIsLLMDropdownOpen(!isLLMDropdownOpen);
+    setTimeout(() => {
+      console.log("Dropdown state after toggle:", isLLMDropdownOpen);
+    }, 100);
+  };
+
+  const handleLLMOptionClick = (option) => {
+    setSelectedLLM(option);
+    setIsLLMDropdownOpen(false);
+    console.log("Selected LLM:", option);
+    // Add any additional logic needed when LLM is changed
+  };
 
 
   const openPopup = (content, category) => {
@@ -52,6 +89,41 @@ const SettingsPage = () => {
               </div>
           </div>
         </div>
+      </div>
+
+      <div className="Settings-page-content-dropdown-background">
+        <div className="Settings-page-text-display-content">
+          <div className="Settings-page-title-content">
+            <div className="Settings-page-title-text">
+              Select LLM
+            </div>
+            {/* LLM Dropdown */}
+            <div className="llm-dropdown-container" ref={llmDropdownRef}>
+            <div className="llm-dropdown-header" onClick={(e) => toggleLLMDropdown(e)}>
+                <div className="llm-dropdown-selected-value">
+                  {selectedLLM ? selectedLLM : "Select LLM..."}
+                </div>
+                <div className="llm-dropdown-arrow">
+                  <span className={`llm-arrow ${isLLMDropdownOpen ? 'up' : 'down'}`}></span>
+                </div>
+              </div>
+              
+              {isLLMDropdownOpen && (
+                <div className="llm-dropdown-options">
+                  {llmOptions.map((option, index) => (
+                    <div
+                      key={index}
+                      className={`llm-dropdown-option ${selectedLLM === option ? 'selected' : ''}`}
+                      onClick={() => handleLLMOptionClick(option)}
+                    >
+                      {option}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>      
       </div>
 
       <div className="Settings-page-content-background">

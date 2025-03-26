@@ -1,0 +1,498 @@
+/* InteractiveScreen.css */
+
+
+.interactive-screen-page-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #FFF;
+}
+
+.interactive-screen-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 5vh, 90px);
+  padding-bottom: clamp(40px, 5vh, 81px);
+  background-color: #FFF;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 100vw;
+}
+
+.interactive-screen-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 54px);
+  border-bottom: 3px solid #D8D8D8;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background: #FFF;
+  z-index: 10;
+}
+
+
+.interactive-screen-header-inside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 clamp(10px, 2vw, 20px);
+  box-sizing: border-box;
+}
+
+
+.interactive-screen-header-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 16px);
+  flex: 1 0 auto;
+  padding: clamp(5px, 1vh, 10px) 0;
+}
+
+.interactive-screen-header-left-text {
+  color: #323335;
+  font-family: 'Aspekta-600';
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+
+  .interactive-screen-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Add spacing between the buttons */
+    margin-left: auto; 
+    /* background: #f0c0c0;  Light red shade */
+  }
+  
+  .interactive-screen-userlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: clamp(10px, 2vw, 20px);
+    height: auto;
+    max-height: calc(100vh - 200px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: clamp(10px, 2vh, 20px);
+    margin-top: clamp(-20px, -3vh, -40px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+
+  .interactive-screen-userlist-container-inside {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: calc(100vh - 250px);
+    padding: clamp(25px, 3vh, 50px) 0 clamp(10px, 2vh, 20px) 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2vh, 25px);
+  }
+  
+  .interactive-screen-settings-container {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      width: 50px; /* Set fixed width */
+      height: 50px; /* Set fixed height */
+      padding: 0; /* Remove unnecessary padding */
+      overflow: hidden; /* Prevent overflow */
+      border-radius: 2px; /* Optional: make it circular */
+      cursor: pointer;
+  }
+  
+  .interactive-screen-settings-img {
+      width: 100%; /* Image takes up full container */
+      height: 100%;
+      object-fit: contain; /* Maintain aspect ratio */
+  }
+  
+  
+
+  .interactive-screen-userlist-frame {
+    width: 97%; /* Ensure full width */
+    height: 112px;
+    flex-shrink: 0;
+    border-bottom: 2px solid #B5B5B5;
+    box-sizing: border-box;
+    display: flex; /* Flex layout for alignment */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center;
+    padding: 0 20px; /* Add padding to both sides */
+  }
+
+  
+  .interactive-screen-userlist-frame-left {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    gap:14px;
+    width: 60%; /* Use full width */
+    padding: 0 20px; /* Optional horizontal padding */
+    box-sizing: border-box;
+  }
+  
+
+  .interactive-screen-userlist-name {
+    color: #323335;
+    font-family: 'Aspekta-500';
+    font-size: clamp(16px, 1.5vw, 22px);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+.interactive-screen-userlist-name-partition{
+    min-width: 1.8px;
+    max-width: 1.8px;
+    height: 55px;
+    background: #424242;
+}
+
+.interactive-screen-userlist-credits-container{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+   
+
+}
+
+.interactive-screen-userlist-credits-text {
+  color: #323335;
+  font-family: 'Aspekta-500';
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.interactive-screen-userlist-credits-info-container{
+    display: flex;
+    width: 318px;
+    height: 50px;
+    padding-right: 268px;
+    align-items: center;
+    
+
+}
+
+.interactive-screen-userlist-credits-info-bg{
+    display: flex;
+    width: 15px;
+    height: 15px;
+    padding: 16px;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0; 
+    border: 2px solid #5a70d9;
+}
+
+.interactive-screen-userlist-credits-info{
+
+    color: var(--Main-Black-Colour, #323335);
+    font-feature-settings: 'calt' off;
+    font-family: 'Aspekta-400';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25.877px; /* 117.621% */ 
+    
+}
+
+.interactive-screen-userlist-frame-right {
+  display: flex;
+  justify-content: flex-end; /* Align everything to the right */
+  align-items: center; /* Vertically align content */
+  gap: 16px; /* Space between buttons */
+  width: auto; /* Remove the full width */
+}
+
+.interactive-screen-userlist-otherdetails-button {
+  color: var(--Main-Black-Colour, #323335);
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.16px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+
+.interactive-screen-userlist-buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.interactive-screen-userlist-viewtranscript-button {
+  display: flex;
+  width: 128px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  border: 2px solid #6A6A6A; /* Add a border */
+  background: transparent; /* Make the background transparent */
+   /* Text color matches the border */
+  /* Ensure the padding does not increase the element size */
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.interactive-screen-userlist-viewtranscript-button:hover {
+  background: #c3c4c8; /* Add hover effect */
+  color: white; /* Change text color on hover */
+}
+
+
+.interactive-screen-userlist-viewtranscript-button-text{
+  width: 120px; 
+  color: var(--Main-Black-Colour, #323335);
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.16px;  
+  padding-right: 12px;  
+}
+
+.interactive-screen-userlist-viewjd-button{
+  display: flex;
+  width: 128px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  cursor: pointer;
+}
+
+.interactive-screen-userlist-viewjd-button-text{
+  color: #FFF;
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px; 
+}
+.interactive-screen-userlist-viewjd-button:hover {
+  background: #92a3f4; /* Add hover effect */
+  color: white; /* Change text color on hover */
+}
+
+
+
+
+.interactive-screen-userlist-viewall-button{
+  display: flex;
+  width: 128px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  cursor: pointer;
+}
+
+.interactive-screen-userlist-viewall-button-text{
+  color: #FFF;
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px; 
+}
+.interactive-screen-userlist-viewall-button:hover {
+  background: #92a3f4; /* Add hover effect */
+  color: white; /* Change text color on hover */
+}
+
+
+
+.interactive-screen-user-list {
+  /* Remove flex-grow and rely on natural page flow */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between user rows */
+  padding: 20px;
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding and borders in width */
+  background-color: #ffffff;
+}
+
+/* Individual user rows */
+.interactive-screen-user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px; /* Increased padding for spacing */
+  margin-bottom: 15px; /* Add margin between rows */
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Rounded corners for rows */
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* User info styles */
+.interactive-screen-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Spacing between user name and credits */
+}
+
+.interactive-screen-user-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.interactive-screen-user-credits {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Actions container */
+.interactive-screen-user-actions {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Button styles */
+.interactive-screen-blue-button {
+  background-color: #6e85f2;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 0 5px; /* Add space between buttons */
+}
+
+.interactive-screen-blue-button:hover {
+  background-color: #5a70d9;
+}
+
+.interactive-screen-userlist-credits-input {
+  width: 2.4rem;             /* Adjust so it’s similar to your existing box width */
+  height: 2.4rem;              /* If your box has a set height */
+  font-size: 1.25rem;           /* Match your existing text size */
+  text-align: center;        /* Center the number */
+  color: #ffffff;            /* Match your text color */
+  background-color: #3e3e3e;    /* Or whatever your box background is */
+  border: 2px solid #1e1b51; /* Purple border to mimic your "blue outline" style */
+  border-radius: 4px;        /* Match the rounding you have on your .info-bg box */
+
+  /* Remove default padding/margins if needed */
+  padding: 0.25rem;
+  margin: 0;
+
+  /* If your existing .credits-info font is something else, include that here */
+  font-family: 'Aspekta-400', sans-serif;
+}
+
+/* Hide the native up/down arrows in Chrome, Safari, Edge, Opera */
+.interactive-screen-userlist-credits-input::-webkit-inner-spin-button,
+.interactive-screen-userlist-credits-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Also hide arrows in Firefox */
+.interactive-screen-userlist-credits-input[type=number] {
+  -moz-appearance: textfield; /* or -moz-appearance: none; in older versions */
+}
+
+@media screen and (max-width: 768px) {
+  .interactive-screen-userlist-frame {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .interactive-screen-userlist-frame-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .interactive-screen-userlist-frame {
+    padding: 1rem;
+  }
+  
+  .interactive-screen-userlist-name,
+  .interactive-screen-userlist-credits-text {
+    font-size: 18px;
+  }
+}
+@container page (max-width: 768px) {
+  .interactive-screen-userlist-frame {
+    flex-direction: column;
+  }
+}
+
+.interactive-screen-userlist-viewtranscript-button,
+.interactive-screen-userlist-viewjd-button,
+.interactive-screen-userlist-viewall-button {
+  min-width: 90px;
+  max-width: 140px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/* Enhanced mobile breakpoint */
+@media screen and (max-width: 640px) {
+  .interactive-screen-userlist-frame {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .interactive-screen-userlist-frame-right {
+    width: 100%;
+  }
+  
+  .interactive-screen-userlist-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './ConversationScreen.css';
 import { db } from "../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+
 const ConversationScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,8 +12,13 @@ const ConversationScreen = () => {
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Set loading to false after component mounts
+    // In a real app, you'd fetch data here
+    setLoading(false);
+  }, []);
+
   const handleOtherDetails = async (userEmail, conversation) => {
-    console.log("handleOtherDetails called with:", { userEmail, conversation });
     try {
       const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversation}`;
       const docRef = doc(db, path);
@@ -23,12 +29,8 @@ const ConversationScreen = () => {
         const filteredData = { ...data };
         delete filteredData.JDCreated;
         delete filteredData.LinkCreated;
-
-        console.log("handleOtherDetails called with:", { userEmail, conversation });
-        console.log("OtherDetailsPage loaded with:", { userEmail, conversationNumber });
         
-        navigate("/otherdetails", { state: { data: filteredData, userEmail, conversationNumber : conversation } });
-
+        navigate("/otherdetails", { state: { data: filteredData, userEmail, conversationNumber: conversation } });
       } else {
         console.error("No data found for Other Details:", path);
       }
@@ -38,7 +40,6 @@ const ConversationScreen = () => {
   };
 
   const handleViewJD = async (userEmail, conversation) => {
-    console.log("handleViewJD called with:", { userEmail, conversation });
     try {
       const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversation}`;
       const docRef = doc(db, path);
@@ -52,10 +53,8 @@ const ConversationScreen = () => {
         delete filteredData.SharedBy;
         delete filteredData.ViewedBy;
         delete filteredData.Timestamp;
-        console.log("handlviewJD called with:", { userEmail, conversation });
-        console.log("OtherviewJD loaded with:", { userEmail, conversationNumber : conversation });
 
-        navigate("/viewjd", { state: { data: filteredData, userEmail ,conversationNumber : conversation } });
+        navigate("/viewjd", { state: { data: filteredData, userEmail, conversationNumber: conversation } });
       } else {
         console.error("No data found for View JD:", path);
       }
@@ -65,7 +64,6 @@ const ConversationScreen = () => {
   };
 
   const handleViewTranscript = async (userEmail, conversation) => {
-    console.log("handleViewTranscript called with:", { userEmail, conversation });
     try {
       const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversation}/Transcript/ChatHistory`;
       const docRef = doc(db, path);
@@ -73,11 +71,10 @@ const ConversationScreen = () => {
 
       if (docSnap.exists()) {
         const chatHistory = docSnap.data().Chat || [];
-        console.log("Retrieved Chat History:", chatHistory);
         navigate("/viewtranscript", {
           state: {
             userEmail,
-            conversationNumber : conversation,
+            conversationNumber: conversation,
             chatHistory,
           },
         });
@@ -89,43 +86,31 @@ const ConversationScreen = () => {
     }
   };
 
-  const generateConversationFrames = (conversationNumber, userEmail) => {
+  const generateConversationRows = (conversationNumber, userEmail) => {
     return Array.from({ length: conversationNumber }, (_, index) => (
       <div className="userlist-frame" key={index}>
         <div className="userlist-frame-left">
           <div className="userlist-name">Conversation {index + 1}</div>
         </div>
         <div className="userlist-frame-right">
-          <div
+          <div 
             className="userlist-otherdetails-button"
-            onClick={() => {
-              console.log("Other Details clicked for conversation:", index + 1, "with userEmail:", userEmail);
-              handleOtherDetails(userEmail, index + 1);
-            }}
+            onClick={() => handleOtherDetails(userEmail, index + 1)}
           >
             Other Details
           </div>
           <div className="userlist-buttons">
             <div
               className="userlist-viewtranscript-button"
-              
-              onClick={() => {
-                console.log("View Transcript clicked for conversation:", index + 1, "with userEmail:", userEmail);
-                handleViewTranscript(userEmail, index + 1);
-              }}
+              onClick={() => handleViewTranscript(userEmail, index + 1)}
             >
-              <div className="userlist-viewtranscript-button-text">
-                View Transcript
-              </div>
+              View Transcript
             </div>
             <div
               className="userlist-viewjd-button"
-              onClick={() => {
-                console.log("View JD clicked for conversation:", index + 1, "with userEmail:", userEmail);
-                handleViewJD(userEmail, index + 1);
-              }}
+              onClick={() => handleViewJD(userEmail, index + 1)}
             >
-              <div className="userlist-viewjd-button-text">View Final J.D.</div>
+              View Final J.D.
             </div>
           </div>
         </div>
@@ -133,9 +118,9 @@ const ConversationScreen = () => {
     ));
   };
 
-
- 
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="conversation-screen-page-container">
@@ -143,10 +128,10 @@ const ConversationScreen = () => {
         <div className="conversation-screen-header">
           <div className="conversation-screen-header-inside">
             <div className="conversation-screen-header-left">
-              <div className="conversation-screen-back-button"  onClick={() => navigate("/")}>
-                <img src="/back.png" alt="Back"  className="conversation-screen-back-button-img"/>
+              <div className="conversation-screen-back-button" onClick={() => navigate("/")}>
+                <img src="/back.png" alt="Back" className="conversation-screen-back-button-img" />
               </div> 
-              <div className="conversation-screen-header-left-text" >
+              <div className="conversation-screen-header-left-text">
                 Conversation History
               </div>
             </div>
@@ -155,8 +140,7 @@ const ConversationScreen = () => {
 
         <div className="conversation-screen-userlist-container">
           <div className="conversation-screen-userlist-container-inside">
-          {generateConversationFrames(conversationNumber, userEmail)}
-
+            {generateConversationRows(conversationNumber, userEmail)}
           </div>
         </div>
       </div>
@@ -164,4 +148,4 @@ const ConversationScreen = () => {
   );
 };
 
-export default ConversationScreen
+export default ConversationScreen;
