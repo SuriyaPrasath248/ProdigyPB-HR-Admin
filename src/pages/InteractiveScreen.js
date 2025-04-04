@@ -34,13 +34,22 @@ const InteractiveScreen = () => {
   
                       if (userDetailsSnap.exists()) {
                           const userData = userDetailsSnap.data();
+                          const ratingsData = userData.Ratings || [];
+                          const profileImage = userData.profileImage || null;
                           return {
                               Name: userData.Name || user.displayName || "Unknown Name",
                               Useremail: user.EmailId,
                               Credits: userData.Credits ?? 0,
                               ConversationNumber: userData.ConversationNumber ?? 0,
+                              CreditsUsed:userData.CreditsUsed ?? 0,
                               JobRole: userData.JobRole || null,
                               CompanyName: userData.CompanyName || null,
+                              Ratings: ratingsData,
+                              profileImage: profileImage,
+                        // Calculate average rating
+                            Rating: ratingsData.length > 0 
+                            ? (ratingsData.reduce((sum, rating) => sum + rating, 0) / ratingsData.length).toFixed(1) + "/5"
+                            : "N/A"
                               // Include any other fields you need from userData
                           };
                       }
@@ -205,7 +214,40 @@ const InteractiveScreen = () => {
   };
     
   const renderUserRow = (user) => {
-    const { Name, Useremail, Credits, CreditsUsed = 0, ConversationNumber, Rating = "N/A" } = user;
+    const { Name, Useremail, Credits, CreditsUsed, ConversationNumber, Rating, profileImage } = user;
+    const getInitials = (name) => {
+      if (!name) return "?";
+      
+      // Split the name into words
+      const words = name.split(' ');
+      
+      if (words.length === 1) {
+        // If only one word, return first letter
+        return words[0].charAt(0).toUpperCase();
+      } else {
+        // Return first letter of first and last word
+        return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
+      }
+    };
+
+    const getProfileColor = (email) => {
+      // Array of pleasant background colors
+      const colors = [
+        "#F44336", "#E91E63", "#9C27B0", "#673AB7", 
+        "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", 
+        "#009688", "#4CAF50", "#8BC34A", "#CDDC39", 
+        "#FFC107", "#FF9800", "#FF5722", "#795548"
+      ];
+      
+      // Get a hash code from the email
+      let hash = 0;
+      for (let i = 0; i < email.length; i++) {
+        hash = email.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      
+      // Use the hash to pick a color
+      return colors[Math.abs(hash) % colors.length];
+    };
 
     return (
       <div className="interactive-screen-userlist-table-row" key={Useremail}>
@@ -244,12 +286,13 @@ const InteractiveScreen = () => {
         
         <div className="interactive-screen-table-col interactive-screen-table-data-col-actions">
           {/* Rest of your actions remain the same */}
-          <div className="interactive-screen-userlist-otherdetails-button" onClick={() => handleOtherDetails(Useremail)}>
-            Other Details
-          </div>
+
   
           {ConversationNumber <= 1 ? (
             <>
+          <div className="interactive-screen-userlist-otherdetails-button" onClick={() => handleOtherDetails(Useremail)}>
+            Other Details
+          </div>
          <div className="interactive-screen-profile-container">
             <div className="interactive-screen-profile-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -258,12 +301,33 @@ const InteractiveScreen = () => {
               </svg>
             </div>
             <div className="interactive-screen-profile-card">
+           
               <div className="interactive-screen-profile-avatar">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
+                  {profileImage ? (
+                    <img 
+                      src={profileImage} 
+                      alt={`${Name} profile`}
+                      style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div 
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        backgroundColor: getProfileColor(Useremail),
+                        color: 'white',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '28px',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {getInitials(Name)}
+                    </div>
+                  )}
+                </div>
               <div className="interactive-screen-profile-info">
                 <h3 className="interactive-screen-profile-name">{Name}</h3>
                 <p className="interactive-screen-profile-job">{user.JobRole || "Not Found"}</p>
@@ -291,13 +355,34 @@ const InteractiveScreen = () => {
                   </svg>
                 </div>
                 <div className="interactive-screen-profile-card">
-                  <div className="interactive-screen-profile-avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                  </div>
-                  <div className="interactive-screen-profile-info">
+               
+                      <div className="interactive-screen-profile-avatar">
+                          {profileImage ? (
+                            <img 
+                              src={profileImage} 
+                              alt={`${Name} profile`}
+                              style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                            />
+                          ) : (
+                            <div 
+                              style={{ 
+                                width: '100%', 
+                                height: '100%', 
+                                backgroundColor: getProfileColor(Useremail),
+                                color: 'white',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '28px',
+                                fontWeight: 'bold'
+                              }}
+                            >
+                              {getInitials(Name)}
+                            </div>
+                          )}
+                        </div>
+                                          <div className="interactive-screen-profile-info">
                     <h3 className="interactive-screen-profile-name">{Name}</h3>
                     <p className="interactive-screen-profile-job">{user.JobRole || "Not Found"}</p>
                     <p className="interactive-screen-profile-company">{user.CompanyName || "Not Found"}</p>
