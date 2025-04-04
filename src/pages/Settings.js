@@ -16,8 +16,7 @@ const SettingsPage = () => {
 
   const llmOptions = [
     'Open AI',
-    'Gemini',
-    'Anthropic'
+    
   ];
 
   useEffect(() => {
