@@ -9,14 +9,51 @@ const ConversationScreen = () => {
   const location = useLocation();
   const { userEmail, conversationNumber } = location.state || {};
 
-  const [conversations, setConversations] = useState([]);
+  const [conversationIndex, setConversationIndex] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Set loading to false after component mounts
-    // In a real app, you'd fetch data here
-    setLoading(false);
-  }, []);
+    const fetchConversationIndex = async () => {
+      try {
+        // Fetch from User/userdetails document 
+        const userDetailsRef = doc(db, "ProjectBrainsReact", "User", userEmail, "userdetails");
+        const userDetailsSnap = await getDoc(userDetailsRef);
+        
+        if (userDetailsSnap.exists() && userDetailsSnap.data().conversationIndex) {
+          const conversationIndexArray = userDetailsSnap.data().conversationIndex;
+          
+          // Sort conversations by conversation number
+          const sortedConversations = [...conversationIndexArray].sort(
+            (a, b) => a.conversationNumber - b.conversationNumber
+          );
+          
+          setConversationIndex(sortedConversations);
+        } else {
+          // Fall back to default view
+          const defaultConversations = Array.from(
+            { length: conversationNumber },
+            (_, i) => ({
+              conversationNumber: i + 1,
+              jobRole: `Conversation ${i + 1}`,
+              //timestamp: "No timestamp available"
+            })
+          );
+          setConversationIndex(defaultConversations);
+        }
+      } catch (error) {
+        console.error("Error fetching conversation index:", error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    if (userEmail && conversationNumber) {
+      fetchConversationIndex();
+    } else {
+      setLoading(false);
+    }
+  }, [userEmail, conversationNumber]);
 
   const handleOtherDetails = async (userEmail, conversation) => {
     try {
@@ -86,29 +123,31 @@ const ConversationScreen = () => {
     }
   };
 
-  const generateConversationRows = (conversationNumber, userEmail) => {
-    return Array.from({ length: conversationNumber }, (_, index) => (
-      <div className="userlist-frame" key={index}>
+  const generateConversationRows = () => {
+    return conversationIndex.map((conversation) => (
+      <div className="userlist-frame" key={conversation.conversationNumber}>
         <div className="userlist-frame-left">
-          <div className="userlist-name">Conversation {index + 1}</div>
+          <div className="userlist-name">{conversation.jobRole}</div>
+         
+          {/*<div className="userlist-timestamp">  {conversation.timestamp}</div>*/}
         </div>
         <div className="userlist-frame-right">
           <div 
             className="userlist-otherdetails-button"
-            onClick={() => handleOtherDetails(userEmail, index + 1)}
+            onClick={() => handleOtherDetails(userEmail, conversation.conversationNumber)}
           >
             Other Details
           </div>
           <div className="userlist-buttons">
             <div
               className="userlist-viewtranscript-button"
-              onClick={() => handleViewTranscript(userEmail, index + 1)}
+              onClick={() => handleViewTranscript(userEmail, conversation.conversationNumber)}
             >
               View Transcript
             </div>
             <div
               className="userlist-viewjd-button"
-              onClick={() => handleViewJD(userEmail, index + 1)}
+              onClick={() => handleViewJD(userEmail, conversation.conversationNumber)}
             >
               View Final J.D.
             </div>
@@ -140,7 +179,7 @@ const ConversationScreen = () => {
 
         <div className="conversation-screen-userlist-container">
           <div className="conversation-screen-userlist-container-inside">
-            {generateConversationRows(conversationNumber, userEmail)}
+            {generateConversationRows()}
           </div>
         </div>
       </div>
