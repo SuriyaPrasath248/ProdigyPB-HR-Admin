@@ -105,7 +105,7 @@ const ViewJDPage = () => {
       console.log("Job role for publish:", jobRole);
       
       // Step 1: Authenticate with Sharetribe
-      const authResponse = await fetch('http://localhost:3000/api/authenticate', {
+      const authResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/authenticate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
