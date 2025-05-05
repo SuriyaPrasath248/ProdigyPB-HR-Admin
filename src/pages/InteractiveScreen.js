@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // For navigation
 import "./InteractiveScreen.css";
 import { db } from "../firebase/firebase";
-import { doc, getDoc , updateDoc} from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const InteractiveScreen = () => {
   
@@ -15,52 +14,80 @@ const InteractiveScreen = () => {
 
     useEffect(() => {
       const fetchUsers = async () => {
-          try {
-              const userListRef = doc(db, "ProjectBrainsReact", "UserList");
-              const userListSnap = await getDoc(userListRef);
-  
-              if (userListSnap.exists()) {
-                  const emailArray = userListSnap.data().email;
-  
-                  const userDataPromises = emailArray.map(async (user) => {
-                      const userDetailsRef = doc(
-                          db,
-                          "ProjectBrainsReact",
-                          "User",
-                          user.EmailId,
-                          "userdetails"
-                      );
-                      const userDetailsSnap = await getDoc(userDetailsRef);
-  
-                      if (userDetailsSnap.exists()) {
-                          const userData = userDetailsSnap.data();
-                          return {
-                              Name: userData.Name || user.displayName || "Unknown Name",
-                              Useremail: user.EmailId,
-                              Credits: userData.Credits ?? 0,
-                              ConversationNumber: userData.ConversationNumber ?? 0,
-                              JobRole: userData.JobRole || null,
-                              CompanyName: userData.CompanyName || null,
-                              // Include any other fields you need from userData
-                          };
-                      }
-                      return null;
-                  });
-  
-                  const userData = await Promise.all(userDataPromises);
-                  setUserList(userData.filter((user) => user !== null));
-              }
-          } catch (error) {
-              console.error("Error fetching user details:", error);
-          } finally {
-              setLoading(false);
-          }
-      };
-  
+        try {
+            const userListRef = doc(db, "ProjectBrainsReact", "UserList");
+            const userListSnap = await getDoc(userListRef);
+    
+            if (userListSnap.exists()) {
+                const emailArray = userListSnap.data().email;
+    
+                const userDataPromises = emailArray.map(async (user) => {
+                    const userDetailsRef = doc(
+                        db,
+                        "ProjectBrainsReact",
+                        "User",
+                        user.EmailId,
+                        "userdetails"
+                    );
+                    const userDetailsSnap = await getDoc(userDetailsRef);
+    
+                    if (userDetailsSnap.exists()) {
+                        const userData = userDetailsSnap.data();
+                        
+                        // Calculate Average Rating
+                        let avgRating = "N/A";
+                        
+                        // Check if Ratings exist
+                        if (userData.Ratings && Object.keys(userData.Ratings).length > 0) {
+                            let totalRatingSum = 0;
+                            let totalRatingCount = 0;
+                            
+                            // Process the Ratings object where keys are identifiers and values are the ratings
+                            Object.values(userData.Ratings).forEach(ratingValue => {
+                                // Convert rating value to number
+                                const rating = parseInt(ratingValue, 10);
+                                
+                                if (!isNaN(rating)) {
+                                    // Add the rating value to the total
+                                    totalRatingSum += rating;
+                                    totalRatingCount += 1;
+                                }
+                            });
+                            
+                            // Calculate average if there are ratings
+                            if (totalRatingCount > 0) {
+                                avgRating = (totalRatingSum / totalRatingCount).toFixed(1);
+                            }
+                        }
+                        
+                        return {
+                            Name: userData.Name || user.displayName || "Unknown Name",
+                            Useremail: user.EmailId,
+                            Credits: userData.Credits ?? 0,
+                            CreditsUsed: userData.CreditsUsed ?? 0, // Use existing CreditsUsed value
+                            ConversationNumber: userData.ConversationNumber ?? 0,
+                            JobRole: userData.JobRole || null,
+                            CompanyName: userData.CompanyName || null,
+                            Rating: avgRating
+                        };
+                    }
+                    return null;
+                });
+    
+                const userData = await Promise.all(userDataPromises);
+                setUserList(userData.filter((user) => user !== null));
+                
+            }
+        } catch (error) {
+            console.error("Error fetching user details:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
       fetchUsers();
   }, []);
 
-    const handleOtherDetails = async (userEmail, conversationNumber =1) => {
+    const handleOtherDetails = async (userEmail, conversationNumber = 1) => {
       console.log("handleOtherDetails triggered for:", userEmail); // Log email being passed
       const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversationNumber}`;
       const docRef = doc(db, path);
@@ -75,7 +102,7 @@ const InteractiveScreen = () => {
           delete filteredData.LinkCreated;
   
           console.log("Filtered Data to send:", filteredData); // Log filtered data being sent
-          navigate("/otherdetails", { state: { data: filteredData, userEmail,conversationNumber } });
+          navigate("/otherdetails", { state: { data: filteredData, userEmail, conversationNumber } });
       } else {
           console.error("No data found at path:", path);
       }
@@ -91,6 +118,9 @@ const InteractiveScreen = () => {
     setNewCreditsValue(e.target.value);
   };
 
+  const handleCreditsChange11 = (e) => {
+    //setNewCreditsValue(e.target.value);
+  }; 
   /**
    * If user presses Enter in the input, we update Firestore 
    * and also update our local userList state with the new credits.
@@ -101,6 +131,7 @@ const InteractiveScreen = () => {
     }
   };
 
+
   /**
    * Actually writes the new credits to Firestore for the given email.
    * Then updates our local state to reflect the new credits.
@@ -110,11 +141,20 @@ const InteractiveScreen = () => {
       const userDetailsRef = doc(db, "ProjectBrainsReact", "User", email, "userdetails");
       await updateDoc(userDetailsRef, { Credits: newCredits });
 
-      // Update local userList 
+      // Update local userList and recalculate CreditsUsed
       setUserList((prevList) =>
-        prevList.map((user) =>
-          user.Useremail === email ? { ...user, Credits: newCredits } : user
-        )
+        prevList.map((user) => {
+          if (user.Useremail === email) {
+            const initialCredits = 5;
+            const creditsUsed = initialCredits - newCredits;
+            return { 
+              ...user, 
+              Credits: newCredits,
+              CreditsUsed: creditsUsed
+            };
+          }
+          return user;
+        })
       );
     } catch (error) {
       console.error("Error updating credits:", error);
@@ -125,7 +165,7 @@ const InteractiveScreen = () => {
     }
   };
     
-    const handleViewJD = async (userEmail, conversationNumber =1) => {
+    const handleViewJD = async (userEmail, conversationNumber = 1) => {
         const path = `ProjectBrainsReact/User/${userEmail}/userdetails/Conversations/Conversation${conversationNumber}`;
         const docRef = doc(db, path);
         const docSnap = await getDoc(docRef);
@@ -139,15 +179,14 @@ const InteractiveScreen = () => {
             delete filteredData.ViewedBy;
             delete filteredData.Timestamp;
 
-            navigate("/viewjd", { state: { data: filteredData, userEmail,conversationNumber } });
+            navigate("/viewjd", { state: { data: filteredData, userEmail, conversationNumber } });
         } else {
             console.error("No data found at path:", path);
         }
     };
 
-    const handleViewTranscript = async (email, conversationNumber =1) => {
+    const handleViewTranscript = async (email, conversationNumber = 1) => {
         console.log(`Navigating to transcript for: ${email}`);
-       // navigate("/viewtranscript",{/* { state: { userEmail: email, chatHistory } }*/}); // Pass userEmail here
         if (!email) {
             console.error("No email provided for fetching the transcript.");
             return;
@@ -161,8 +200,7 @@ const InteractiveScreen = () => {
             if (docSnap.exists()) {
                 const chatHistory = docSnap.data().Chat || [];
                 console.log("Fetched chat history:", chatHistory);
-                //navigate("/viewtranscript",{/* { state: { userEmail: email, chatHistory } }*/}); // Pass userEmail here
-                navigate("/viewtranscript", { state: { userEmail: email, chatHistory,conversationNumber } }); // Pass userEmail here
+                navigate("/viewtranscript", { state: { userEmail: email, chatHistory, conversationNumber } });
             } else {
                 console.error("No data found at path:", path);
             }
@@ -171,13 +209,10 @@ const InteractiveScreen = () => {
         }
     };
     
-
     const handleViewAll = (userEmail, conversationNumber) => {
       console.log(`View All clicked for User: ${userEmail}, Conversations: ${conversationNumber}`);
       navigate("/conversationpage", { state: { userEmail, conversationNumber } });
-
     };
-
 
     const handleSettingsClick = async () => {
       console.log("handleSettingsClick triggered");
@@ -205,7 +240,7 @@ const InteractiveScreen = () => {
   };
     
   const renderUserRow = (user) => {
-    const { Name, Useremail, Credits, CreditsUsed = 0, ConversationNumber, Rating = "N/A" } = user;
+    const { Name, Useremail, Credits, CreditsUsed, ConversationNumber, Rating } = user;
 
     return (
       <div className="interactive-screen-userlist-table-row" key={Useremail}>
