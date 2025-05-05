@@ -105,7 +105,7 @@ const ViewJDPage = () => {
       console.log("Job role for publish:", jobRole);
       
       // Step 1: Authenticate with Sharetribe
-      const authResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/authenticate', {
+      const authResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/api/authenticate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -178,7 +178,7 @@ const ViewJDPage = () => {
         }
       };
       
-      const createListingResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/create-listing', {
+      const createListingResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/api/create-listing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
