@@ -178,12 +178,12 @@ const ViewJDPage = () => {
         }
       };
       
-      const createListingResponse = await fetch('http://localhost:3000/api/create-listing', {
+      const createListingResponse = await fetch('https://sharetribe-login-376436174826.europe-west2.run.app/create-listing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-          'userEmail': "narayanan@xplorro.com"
+          'userEmail': "m.s.prasath5818@gmail.com"
         },
         body: JSON.stringify(mockListing)
       });
