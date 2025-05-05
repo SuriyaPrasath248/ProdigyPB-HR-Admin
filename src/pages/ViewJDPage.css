@@ -39,16 +39,6 @@
   /* background: #e0e0e0; Light gray background for the header section */
 }
 
-
-
-
-/*.header,
-.header-inside,
-.jd-link-container,
-.chatbox {
-  border: 1px solid red;
-}*/
-
 /* Inner header layout */
 .view-jd-header-inside {
   display: flex;
@@ -72,7 +62,6 @@
   align-items: center;
   gap: 16px; /* Add spacing between the buttons */
   margin-left: auto; 
-  
 }
 
 .view-jd-user-email{
@@ -100,17 +89,16 @@
 }
 
 .view-jd-ViewTranscript-button{
-    display: flex;
-    width: 168px;
-    padding: 16px 24px;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 8px;
-    border-radius: 4px;
-    background: #6E85F2;
-    cursor: pointer;
-    border: 2px solid #6E85F2;
-
+  display: flex;
+  width: 168px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  background: #6E85F2;
+  cursor: pointer;
+  border: 2px solid #6E85F2;
 }
 
 .view-jd-ViewTranscript-button-text{
@@ -124,12 +112,75 @@
   letter-spacing: -0.18px; 
   white-space: nowrap;
 }
+
 .view-jd-ViewTranscript-button:hover {
   background: #92a3f4; /* Add hover effect */
   color: white; /* Change text color on hover */
 }
 
+/* New Publish to Marketplace button */
+.view-jd-publish-button {
+  display: flex;
+  width: 220px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  border-radius: 4px;
+  background: #4caf50; /* Green color to differentiate from View Transcript button */
+  cursor: pointer;
+  border: 2px solid #4caf50;
+}
 
+.view-jd-publish-button-text {
+  color: #FFF;
+  font-feature-settings: 'calt' off;
+  font-family: 'Inter-semibold';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px;
+  white-space: nowrap;
+}
+
+.view-jd-publish-button:hover {
+  background: #66bb6a; /* Lighter green on hover */
+}
+
+.view-jd-publish-button[disabled] {
+  background: #a5d6a7; /* Lighter green when disabled */
+  cursor: not-allowed;
+}
+
+/* View on Marketplace button container */
+.view-jd-marketplace-button-container {
+  margin-top: -40px;
+  margin-bottom: -40px;
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+}
+
+/* View on Marketplace button */
+.view-jd-marketplace-button {
+  padding: 12px 24px;
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: 'Inter-semibold';
+  font-size: 16px;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.view-jd-marketplace-button:hover {
+  background: #66bb6a;
+}
 
 .view-jd-OtherDetails-button{
   color: var(--Main-Black-Colour, #323335);
@@ -173,7 +224,6 @@
   border-bottom: 2px solid #ABABAB;
 }
 
-
 .view-jd-chatbox-header-text{
   color: var(--Main-Black-Colour, #323335);
   font-family: 'Aspekta-700';
@@ -184,7 +234,6 @@
   justify-content: flex-end;
   padding-bottom: 81px;
   padding-left: 20px;
-  
 }
 
 .view-jd-content{
@@ -197,7 +246,6 @@
   height: 98%; /* Viewport height minus header height */
   overflow-y: auto; /* Enable vertical scrolling for the content area */
   margin-top: 50px; /* Add margin to prevent overlap with the fixed header */
-
 }
 
 .view-jd-jd-link-container {
@@ -236,7 +284,6 @@
   font-weight: 700;
   line-height: normal;
   white-space: nowrap;
-
 }
 
 .view-jd-jd-hyperlink {
@@ -260,7 +307,6 @@
   display: block; /* Ensures proper layout for inline elements */
   width: 100%; /* Optional: Define container width */
 }
-
 
 /* Styles for the JD Link Copy Icon */
 .view-jd-copy-icon{
@@ -290,7 +336,6 @@
   height: 33px;
   flex-shrink: 0;
 }
-
 
 .view-jd-content-copy-icon{
   display: flex;
@@ -328,8 +373,3 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
-
-
-
-
