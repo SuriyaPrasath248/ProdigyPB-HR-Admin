@@ -183,7 +183,7 @@ const ViewJDPage = () => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-          'userEmail': "m.s.prasath5818@gmail.com"
+          'userEmail': "narayanan@xplorro.com"
         },
         body: JSON.stringify(mockListing)
       });
