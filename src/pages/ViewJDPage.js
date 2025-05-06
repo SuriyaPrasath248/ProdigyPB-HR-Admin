@@ -130,6 +130,7 @@ const ViewJDPage = () => {
         // Core listing information
         title: jobRole,
         description: data.JDCreated,
+        authorId: "6810e841-eab7-483c-a9a2-aa8d774073c9",
         state: "published",
         
         // Geolocation information
@@ -151,7 +152,7 @@ const ViewJDPage = () => {
           entries: []
         },
         
-        userEmail: "narayanan@xplorro.com",
+        //userEmail: "narayanan@xplorro.com",
         
         // PublicData object with all the required fields
         publicData: {
@@ -183,7 +184,7 @@ const ViewJDPage = () => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-          'userEmail': "narayanan@xplorro.com"
+          'userEmail': "info@projectbrains.io"
         },
         body: JSON.stringify(mockListing)
       });
